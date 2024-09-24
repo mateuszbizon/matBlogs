@@ -1,0 +1,13 @@
+import { z } from "zod"
+
+const usernameMinLength = 5
+const usernameMaxLength = 20
+const usernameLengthMessage = `Length of username must be between ${usernameMinLength} and ${usernameMaxLength}.`
+
+export const userSchema = z.object({
+    username: z.string().min(usernameMinLength, usernameLengthMessage).max(usernameMaxLength, usernameLengthMessage),
+    name: z.string().min(1, "Name can't be empty."),
+    password: z.string().min(1, "Password can't be empty.")
+})
+
+export type TUserSchema = z.infer<typeof userSchema>
