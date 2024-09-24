@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import { createUser, getUserByUsername } from "../services/user.service";
-import { BadRequestError } from "../errors/BadRequestError";
-import { DatabaseError } from "../errors/DatabaseError";
-import { TUserSchema, userSchema } from "../dtos/user.dto";
+import { getUserByUsername } from "../../services/users/getUserByUsername.service";
+import { createUser } from "../../services/users/createUser.service";
+import { BadRequestError } from "../../errors/BadRequestError";
+import { DatabaseError } from "../../errors/DatabaseError";
+import { TUserSchema, userSchema } from "../../dtos/user.dto";
 import bcrypt from "bcryptjs"
 import { fromZodError } from "zod-validation-error"
 
