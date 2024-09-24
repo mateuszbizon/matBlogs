@@ -1,7 +1,8 @@
+import { messages } from "../messages";
 import { CustomError } from "./CustomError";
 
 export class DatabaseError extends CustomError {   
-    constructor(message: string = "Database problems. Try again later.") {
+    constructor(message: string = messages.database.databaseFail) {
         super(message);
         Object.setPrototypeOf(this, DatabaseError.prototype)
     }
