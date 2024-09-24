@@ -7,6 +7,7 @@ export const messages = {
         databaseFail: "Database problems. Try again later."
     },
     auth: {
-        invalidSignIn: "Invalid username or password."
+        invalidSignIn: "Invalid username or password.",
+        signedIn: "User signed in."
     }
 }
