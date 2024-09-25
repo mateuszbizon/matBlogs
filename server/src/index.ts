@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import bodyParser from "body-parser"
 import errorHandler from "./utils/errorHandler"
 import userRoutes from "./routes/user.route"
+import postRoutes from "./routes/post.route"
 
 dotenv.config()
 
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 app.use(bodyParser.json())
 
 app.use("/users", userRoutes)
+app.use("/posts", postRoutes)
 
 app.use(errorHandler)
 

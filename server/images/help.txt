@@ -1,0 +1,1 @@
+Directory images contains temporary images that would be uploaded to database and after that would be deleted from this directory. This file was created only to keep images directory.
