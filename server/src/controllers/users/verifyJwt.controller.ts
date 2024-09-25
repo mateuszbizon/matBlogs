@@ -8,7 +8,7 @@ export function verifyJwtController(req: Request, res: Response, next:NextFuncti
         const token = req.headers.authorization?.split(" ")[1]
 
         if (!token) {
-            return next(new AuthenticationError())
+            return next(new AuthenticationError(messages.auth.tokenInvalid))
         }
 
         jwt.verify(token, "authToken")
