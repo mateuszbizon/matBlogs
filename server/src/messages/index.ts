@@ -8,6 +8,8 @@ export const messages = {
     },
     auth: {
         invalidSignIn: "Invalid username or password.",
-        signedIn: "User signed in."
+        signedIn: "User signed in.",
+        userNotSignedIn: "User is not signed in.",
+        userStillSignedIn: "User is still signed in."
     }
 }
