@@ -1,7 +1,10 @@
 export const messages = {
     user: {
         usernameAlreadyExists: "User with given username already exists.",
-        userCreated: "User created."
+        userCreated: "User created.",
+    },
+    post: {
+        postCreated: "Post created."
     },
     database: {
         databaseFail: "Database problems. Try again later."
@@ -12,5 +15,8 @@ export const messages = {
         userNotSignedIn: "Token expired. Sign in again.",
         tokenInvalid: "Invalid token.",
         userStillSignedIn: "User is still signed in."
+    },
+    file: {
+        fileNotProvided: "File was not provided."
     }
 }

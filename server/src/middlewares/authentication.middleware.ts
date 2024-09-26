@@ -13,7 +13,7 @@ export function authenticationMiddleware(req: Request, res: Response, next: Next
 
         const decodedData = jwt.verify(token, "authToken") as JwtPayload
 
-        req.userId = decodedData.id
+        res.locals.userId = decodedData.id
 
         next()
     } catch (error) {
