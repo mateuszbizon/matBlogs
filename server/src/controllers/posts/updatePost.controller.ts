@@ -12,6 +12,7 @@ import { TUpdatePostParams } from "../../types/params";
 import { getPostById } from "../../services/posts/getPostById.service";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { TMainResponse, TPostResponse } from "../../types/responses";
+import { ForbiddenError } from "../../errors/ForbiddenError";
 
 export async function updatePostController(
     req: Request<TUpdatePostParams, {}, TPostSchema>, 
@@ -27,6 +28,10 @@ export async function updatePostController(
 
         if (!existingPost) {
             return next(new NotFoundError(messages.post.postNotFound))
+        }
+
+        if (res.locals.userId !== existingPost.authorId) {
+            return next(new ForbiddenError(messages.forbidden.notPostAuthor))
         }
 
         const postValidation = postSchema.safeParse(req.body)

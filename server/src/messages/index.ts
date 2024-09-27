@@ -18,6 +18,9 @@ export const messages = {
         tokenInvalid: "Invalid token.",
         userStillSignedIn: "User is still signed in."
     },
+    forbidden: {
+        notPostAuthor: "You are not author of that post.",
+    },
     file: {
         fileNotProvided: "File was not provided."
     }
