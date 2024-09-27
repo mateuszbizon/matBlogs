@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express"
 import { AuthenticationError } from "../errors/AuthenticationError"
-import jwt from "jsonwebtoken"
+import jwt, { JwtPayload } from "jsonwebtoken"
 import { messages } from "../messages"
 
 export function authenticationMiddleware(req: Request, res: Response, next: NextFunction) {
@@ -11,7 +11,9 @@ export function authenticationMiddleware(req: Request, res: Response, next: Next
             return next(new AuthenticationError(messages.auth.tokenInvalid))
         }
 
-        jwt.verify(token, "authToken")
+        const decodedData = jwt.verify(token, "authToken") as JwtPayload
+
+        res.locals.userId = decodedData.id
 
         next()
     } catch (error) {
