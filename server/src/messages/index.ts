@@ -4,7 +4,9 @@ export const messages = {
         userCreated: "User created.",
     },
     post: {
-        postCreated: "Post created."
+        postCreated: "Post created.",
+        postNotFound: "Post with given id not found.",
+        postUpdated: "Post updated."
     },
     database: {
         databaseFail: "Database problems. Try again later."
@@ -15,6 +17,9 @@ export const messages = {
         userNotSignedIn: "Token expired. Sign in again.",
         tokenInvalid: "Invalid token.",
         userStillSignedIn: "User is still signed in."
+    },
+    forbidden: {
+        notPostAuthor: "You are not author of that post.",
     },
     file: {
         fileNotProvided: "File was not provided."
