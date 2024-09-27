@@ -11,8 +11,13 @@ import { updatePost } from "../../services/posts/updatePost.service";
 import { TUpdatePostParams } from "../../types/params";
 import { getPostById } from "../../services/posts/getPostById.service";
 import { NotFoundError } from "../../errors/NotFoundError";
+import { TMainResponse, TPostResponse } from "../../types/responses";
 
-export async function updatePostController(req: Request<TUpdatePostParams, {}, TPostSchema>, res: Response, next: NextFunction) {
+export async function updatePostController(
+    req: Request<TUpdatePostParams, {}, TPostSchema>, 
+    res: Response<TMainResponse<TPostResponse>>, 
+    next: NextFunction
+) {      
     const { title, content } = req.body
     const { postId } = req.params
     const postPhoto = req.file
@@ -48,7 +53,11 @@ export async function updatePostController(req: Request<TUpdatePostParams, {}, T
 
         const updatedPost = await updatePost({ title, content }, imageUrl, postId)
 
-        return res.status(200).json({ statusCode: 200, message: messages.post.postUpdated, data: updatedPost })
+        return res.status(200).json({
+            statusCode: 200, 
+            message: messages.post.postUpdated, 
+            data: updatedPost
+        })
     } catch (error) {
         next(new DatabaseError())
     } finally {

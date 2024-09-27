@@ -7,8 +7,9 @@ import { messages } from "../../messages";
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import { fromZodError } from "zod-validation-error";
+import { TMainResponse, TSignInResponse } from "../../types/responses";
 
-export async function signInController(req: Request<{}, {}, TSignInSchema>, res: Response, next: NextFunction) {
+export async function signInController(req: Request<{}, {}, TSignInSchema>, res: Response<TMainResponse<TSignInResponse>>, next: NextFunction) {
     const { username, password } = req.body
 
     try {
@@ -32,7 +33,14 @@ export async function signInController(req: Request<{}, {}, TSignInSchema>, res:
 
         const token = jwt.sign({ id: existingUser.id }, "authToken", { expiresIn: "3h" })
 
-        res.status(200).json({ statusCode: 200, message: messages.auth.signedIn, data: token })
+        res.status(200).json({
+            statusCode: 200, 
+            message: messages.auth.signedIn, 
+            data: {
+                token: token, 
+                user: { id: existingUser.id, name: existingUser.name, username: existingUser.username } 
+            }
+        })
     } catch (error) {
         next(new DatabaseError())
     }
