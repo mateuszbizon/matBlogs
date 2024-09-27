@@ -6,11 +6,11 @@ import { createPost } from "../../services/posts/createPost.service";
 import { messages } from "../../messages";
 import { AuthenticationError } from "../../errors/AuthenticationError";
 import { BadRequestError } from "../../errors/BadRequestError";
+import { uploadImageToCloudinary } from "../../utils/cloudinary";
 
 export async function createPostController(req: Request<{}, {}, TPostSchema>, res: Response, next: NextFunction) {
     const { title, content } = req.body
     const postPhoto = req.file
-    console.log(postPhoto)
 
     try {
         if (!res.locals.userId) {
@@ -21,9 +21,13 @@ export async function createPostController(req: Request<{}, {}, TPostSchema>, re
             return next(new BadRequestError(messages.file.fileNotProvided))
         }
 
-        const createdPost = await createPost({ title, content }, "photo", res.locals.userId)
+        const imageUrl = await uploadImageToCloudinary(postPhoto.path)
 
-        deleteFile(postPhoto.path)
+        if (!imageUrl) {
+            return next(new DatabaseError())
+        }
+
+        const createdPost = await createPost({ title, content }, imageUrl, res.locals.userId)
 
         return res.status(201).json({ statusCode: 201, message: messages.post.postCreated, data: createdPost })
     } catch (error) {
