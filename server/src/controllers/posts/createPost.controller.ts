@@ -8,6 +8,7 @@ import { AuthenticationError } from "../../errors/AuthenticationError";
 import { BadRequestError } from "../../errors/BadRequestError";
 import { uploadImageToCloudinary } from "../../utils/cloudinary";
 import { fromZodError } from "zod-validation-error";
+import { fileSchema } from "../../dtos/file.dto";
 
 export async function createPostController(req: Request<{}, {}, TPostSchema>, res: Response, next: NextFunction) {
     const { title, content } = req.body
@@ -26,6 +27,12 @@ export async function createPostController(req: Request<{}, {}, TPostSchema>, re
 
         if (!postPhoto) {
             return next(new BadRequestError(messages.file.fileNotProvided))
+        }
+
+        const fileValidation = fileSchema.safeParse(req.file)
+
+        if (!fileValidation.success) {
+            return next(new BadRequestError(fromZodError(fileValidation.error).details[0].message))
         }
 
         const imageUrl = await uploadImageToCloudinary(postPhoto.path)
