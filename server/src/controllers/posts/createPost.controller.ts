@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { deleteFile } from "../../utils/deleteFile";
+import { deleteTemporaryFile } from "../../utils/deleteFile";
 import { DatabaseError } from "../../errors/DatabaseError";
 import { postSchema, TPostSchema } from "../../dtos/post.dto";
 import { createPost } from "../../services/posts/createPost.service";
@@ -39,5 +39,9 @@ export async function createPostController(req: Request<{}, {}, TPostSchema>, re
         return res.status(201).json({ statusCode: 201, message: messages.post.postCreated, data: createdPost })
     } catch (error) {
         next(new DatabaseError())
+    } finally {
+        if (postPhoto) {
+            deleteTemporaryFile(postPhoto.path)
+        }
     }
 }

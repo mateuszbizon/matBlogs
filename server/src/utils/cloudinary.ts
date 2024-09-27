@@ -1,5 +1,4 @@
 import { v2 as cloudinary } from 'cloudinary';
-import { deleteFile } from './deleteFile';
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -12,8 +11,6 @@ export async function uploadImageToCloudinary(filePath: string) {
     const result = await cloudinary.uploader.upload(filePath, {
       folder: 'blog_images',
     });
-
-    deleteFile(filePath)
 
     return result.secure_url
   } catch (error) {
