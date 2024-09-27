@@ -1,12 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import { deleteFile } from "../../utils/deleteFile";
 import { DatabaseError } from "../../errors/DatabaseError";
-import { TPostSchema } from "../../dtos/post.dto";
+import { postSchema, TPostSchema } from "../../dtos/post.dto";
 import { createPost } from "../../services/posts/createPost.service";
 import { messages } from "../../messages";
 import { AuthenticationError } from "../../errors/AuthenticationError";
 import { BadRequestError } from "../../errors/BadRequestError";
 import { uploadImageToCloudinary } from "../../utils/cloudinary";
+import { fromZodError } from "zod-validation-error";
 
 export async function createPostController(req: Request<{}, {}, TPostSchema>, res: Response, next: NextFunction) {
     const { title, content } = req.body
@@ -15,6 +16,12 @@ export async function createPostController(req: Request<{}, {}, TPostSchema>, re
     try {
         if (!res.locals.userId) {
             return next(new AuthenticationError(messages.auth.tokenInvalid))
+        }
+
+        const postValidation = postSchema.safeParse(req.body)
+
+        if (!postValidation.success) {
+            return next(new BadRequestError(fromZodError(postValidation.error).details[0].message))
         }
 
         if (!postPhoto) {
