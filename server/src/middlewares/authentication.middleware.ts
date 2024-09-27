@@ -15,6 +15,10 @@ export function authenticationMiddleware(req: Request, res: Response, next: Next
 
         res.locals.userId = decodedData.id
 
+        if (!res.locals.userId) {
+            return next(new AuthenticationError(messages.auth.tokenInvalid))
+        }
+
         next()
     } catch (error) {
         next(new AuthenticationError())
