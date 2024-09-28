@@ -4,7 +4,7 @@ import { NotFoundError } from "../../errors/NotFoundError";
 import { messages } from "../../messages";
 import { TGetSinglePostResponse, TMainResponse } from "../../types/responses";
 import { DatabaseError } from "../../errors/DatabaseError";
-import { getPostBySlug } from "../../services/posts/getPostBySlug";
+import { getCompletePost } from "../../services/posts/getCompletePost";
 
 export async function getSinglePostController(
     req: Request<TGetSinglePostParams>, 
@@ -14,7 +14,7 @@ export async function getSinglePostController(
     const { slug } = req.params
 
     try {
-        const existingPost = await getPostBySlug(slug)
+        const existingPost = await getCompletePost(slug)
 
         if (!existingPost) {
             return next(new NotFoundError(messages.post.postNotFound))
