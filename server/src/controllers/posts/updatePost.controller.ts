@@ -11,12 +11,12 @@ import { updatePost } from "../../services/posts/updatePost.service";
 import { TUpdatePostParams } from "../../types/params";
 import { getPostById } from "../../services/posts/getPostById.service";
 import { NotFoundError } from "../../errors/NotFoundError";
-import { TMainResponse, TPostResponse } from "../../types/responses";
+import { TMainResponse, TUpdatePostResponse } from "../../types/responses";
 import { ForbiddenError } from "../../errors/ForbiddenError";
 
 export async function updatePostController(
     req: Request<TUpdatePostParams, {}, TPostSchema>, 
-    res: Response<TMainResponse<TPostResponse>>, 
+    res: Response<TMainResponse<TUpdatePostResponse>>, 
     next: NextFunction
 ) {      
     const { title, content } = req.body
@@ -61,7 +61,9 @@ export async function updatePostController(
         return res.status(200).json({
             statusCode: 200, 
             message: messages.post.postUpdated, 
-            data: updatedPost
+            data: {
+                post: updatedPost
+            }
         })
     } catch (error) {
         next(new DatabaseError())
