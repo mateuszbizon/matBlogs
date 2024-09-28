@@ -9,6 +9,10 @@ export type TSignInResponse = {
     user: TUserResponse;
 }
 
+export type TGetSinglePostResponse = {
+    post: TPostResponse | null
+}
+
 export type TUserResponse = {
     id: string;
     username: string;
