@@ -11,6 +11,6 @@ const router = express.Router()
 router.post("/create-post", authenticationMiddleware, upload.single("image"), createPostController)
 router.put("/update-post/:postId", authenticationMiddleware, upload.single("image"), updatePostController)
 router.delete("/delete-post/:postId", authenticationMiddleware, deletePostController)
-router.get("/get-post/:postId", getSinglePostController)
+router.get("/get-post/:slug", getSinglePostController)
 
 export default router

@@ -1,20 +1,20 @@
 import { NextFunction, Request, Response } from "express";
 import { TGetSinglePostParams } from "../../types/params";
-import { getPostById } from "../../services/posts/getPostById.service";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { messages } from "../../messages";
 import { TGetSinglePostResponse, TMainResponse } from "../../types/responses";
 import { DatabaseError } from "../../errors/DatabaseError";
+import { getPostBySlug } from "../../services/posts/getPostBySlug";
 
 export async function getSinglePostController(
     req: Request<TGetSinglePostParams>, 
     res: Response<TMainResponse<TGetSinglePostResponse>>, 
     next: NextFunction
 ) {
-    const { postId } = req.params
+    const { slug } = req.params
 
     try {
-        const existingPost = await getPostById(postId)
+        const existingPost = await getPostBySlug(slug)
 
         if (!existingPost) {
             return next(new NotFoundError(messages.post.postNotFound))

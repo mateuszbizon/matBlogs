@@ -5,7 +5,7 @@ export const messages = {
     },
     post: {
         postCreated: "Post created.",
-        postNotFound: "Post with given id not found.",
+        postNotFound: "Post not found.",
         postUpdated: "Post updated.",
         postDeleted: "Post deleted.",
         postRetrieved: "Post retrieved.",
