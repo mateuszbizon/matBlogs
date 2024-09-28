@@ -9,9 +9,9 @@ import { BadRequestError } from "../../errors/BadRequestError";
 import { uploadImageToCloudinary } from "../../utils/cloudinary";
 import { fromZodError } from "zod-validation-error";
 import { fileSchema } from "../../dtos/file.dto";
-import { TMainResponse, TPostResponse } from "../../types/responses";
+import { TCreatePostResponse, TMainResponse } from "../../types/responses";
 
-export async function createPostController(req: Request<{}, {}, TPostSchema>, res: Response<TMainResponse<TPostResponse>>, next: NextFunction) {
+export async function createPostController(req: Request<{}, {}, TPostSchema>, res: Response<TMainResponse<TCreatePostResponse>>, next: NextFunction) {
     const { title, content } = req.body
     const postPhoto = req.file
 
@@ -47,7 +47,9 @@ export async function createPostController(req: Request<{}, {}, TPostSchema>, re
         return res.status(201).json({
             statusCode: 201, 
             message: messages.post.postCreated, 
-            data: createdPost
+            data: {
+                post: createdPost
+            }
         })
     } catch (error) {
         next(new DatabaseError())

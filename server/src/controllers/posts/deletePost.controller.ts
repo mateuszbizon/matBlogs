@@ -5,10 +5,10 @@ import { NotFoundError } from "../../errors/NotFoundError";
 import { messages } from "../../messages";
 import { ForbiddenError } from "../../errors/ForbiddenError";
 import { deletePost } from "../../services/posts/deletePost.service";
-import { TMainResponse, TPostResponse } from "../../types/responses";
+import { TDeletePostResponse, TMainResponse } from "../../types/responses";
 import { DatabaseError } from "../../errors/DatabaseError";
 
-export async function deletePostController(req: Request<TDeletePostParams>, res: Response<TMainResponse<TPostResponse>>, next: NextFunction) {
+export async function deletePostController(req: Request<TDeletePostParams>, res: Response<TMainResponse<TDeletePostResponse>>, next: NextFunction) {
     const { postId } = req.params
 
     try {
@@ -27,7 +27,9 @@ export async function deletePostController(req: Request<TDeletePostParams>, res:
         return res.status(200).json({
             statusCode: 200, 
             message: messages.post.postDeleted, 
-            data: deletedPost
+            data: {
+                post: deletedPost
+            }
         })
     } catch (error) {
         console.error(error)

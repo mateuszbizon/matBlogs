@@ -7,9 +7,9 @@ import { TUserSchema, userSchema } from "../../dtos/user.dto";
 import bcrypt from "bcryptjs"
 import { fromZodError } from "zod-validation-error"
 import { messages } from "../../messages";
-import { TMainResponse, TUserResponse } from "../../types/responses";
+import { TMainResponse, TSignUpResponse, } from "../../types/responses";
 
-export async function signUpController(req: Request<{}, {}, TUserSchema>, res: Response<TMainResponse<TUserResponse>>, next: NextFunction) {
+export async function signUpController(req: Request<{}, {}, TUserSchema>, res: Response<TMainResponse<TSignUpResponse>>, next: NextFunction) {
     const { username, name, password } = req.body
 
     try {
@@ -32,7 +32,9 @@ export async function signUpController(req: Request<{}, {}, TUserSchema>, res: R
         return res.status(201).json({
             statusCode: 201, 
             message: messages.user.userCreated, 
-            data: createdUser
+            data: {
+                user: createdUser
+            }
         })
     } catch (error) {
         next(new DatabaseError())

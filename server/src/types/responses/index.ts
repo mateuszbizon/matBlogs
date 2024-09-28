@@ -1,3 +1,5 @@
+import { TPost, TUser } from "../models";
+
 export type TMainResponse<Data = any> = {
     statusCode: number;
     message: string;
@@ -6,57 +8,25 @@ export type TMainResponse<Data = any> = {
 
 export type TSignInResponse = {
     token: string;
-    user: TUserResponse;
+    user: TUser;
+}
+
+export type TSignUpResponse = {
+    user: TUser
+}
+
+export type TCreatePostResponse = {
+    post: TPost
+}
+
+export type TUpdatePostResponse = {
+    post: TPost
+}
+
+export type TDeletePostResponse = {
+    post: TPost
 }
 
 export type TGetSinglePostResponse = {
-    post: TPostResponse | null
+    post: TPost | null
 }
-
-export type TUserResponse = {
-    id: string;
-    username: string;
-    name: string;
-    profile?: TProfileResponse | null;
-    posts?: TPostResponse[];
-    postRatings?: TPostRatingResponse[];
-}
-
-export type TProfileResponse = {
-    id: string;
-    photo: string;
-    userId: string;
-};
-
-export type TPostResponse = {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    title: string;
-    content: string;
-    titlePhoto: string;
-    authorId: string;
-    comments?: TCommentResponse[];
-    postRatings?: TPostRatingResponse[];
-};
-
-export type TCommentResponse = {
-    id: string;
-    content: string;
-    postId: string;
-    commentReplies?: TCommentReplyResponse[];
-};
-
-export type TCommentReplyResponse = {
-    id: string;
-    content: string;
-    replyingTo: string;
-    commentId: string;
-};  
-
-export type TPostRatingResponse = {
-    id: string;
-    value: number;
-    postId: string;
-    userId: string;
-};  
