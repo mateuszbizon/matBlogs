@@ -8,7 +8,8 @@ export const messages = {
         postNotFound: "Post with given id not found.",
         postUpdated: "Post updated.",
         postDeleted: "Post deleted.",
-        postRetrieved: "Post retrieved."
+        postRetrieved: "Post retrieved.",
+        postSlugAlreadyExists: "Post with given title already exists."
     },
     database: {
         databaseFail: "Database problems. Try again later."

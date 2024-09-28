@@ -21,6 +21,7 @@ export type TPost = {
     content: string;
     titlePhoto: string;
     authorId: string;
+    slug: string;
     comments?: TComment[];
     postRatings?: TPostRating[];
 };
