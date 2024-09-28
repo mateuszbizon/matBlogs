@@ -1,7 +1,7 @@
-export type TUpdatePostParams = {
-    postId: string;
+type TParams<T extends string[]> = {
+    [key in T[number]]: string;
 }
 
-export type TDeletePostParams = {
-    postId: string;
-}
+export type TUpdatePostParams = TParams<["postId"]>
+
+export type TDeletePostParams = TParams<["postId"]>
