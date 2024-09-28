@@ -13,6 +13,8 @@ import { getPostById } from "../../services/posts/getPostById.service";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { TMainResponse, TUpdatePostResponse } from "../../types/responses";
 import { ForbiddenError } from "../../errors/ForbiddenError";
+import { generateSlug } from "../../utils/generateSlug";
+import { getPostBySlug } from "../../services/posts/getPostBySlug";
 
 export async function updatePostController(
     req: Request<TUpdatePostParams, {}, TPostSchema>, 
@@ -50,13 +52,21 @@ export async function updatePostController(
             return next(new BadRequestError(fromZodError(fileValidation.error).details[0].message))
         }
 
+        const slug = generateSlug(title)
+
+        const existingSlug = await getPostBySlug(slug)
+
+        if (existingSlug) {
+            return next(new BadRequestError(messages.post.postSlugAlreadyExists))
+        }
+
         const imageUrl = await uploadImageToCloudinary(postPhoto.path)
 
         if (!imageUrl) {
             return next(new DatabaseError())
         }
 
-        const updatedPost = await updatePost({ title, content }, imageUrl, postId)
+        const updatedPost = await updatePost({ title, content }, imageUrl, postId, slug)
 
         return res.status(200).json({
             statusCode: 200, 

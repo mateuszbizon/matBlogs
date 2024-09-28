@@ -31,6 +31,7 @@ model Post {
   title      String   
   content    String
   titlePhoto String
+  slug       String   @unique
   author     User     @relation(fields: [authorId], references: [id])
   authorId   String
   comments    Comment[]

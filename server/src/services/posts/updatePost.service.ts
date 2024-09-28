@@ -3,7 +3,7 @@ import { TPostSchema } from "../../dtos/post.dto"
 
 const prisma = new PrismaClient()
 
-export async function updatePost(postData: TPostSchema, postPhoto: string, postId: string) {
+export async function updatePost(postData: TPostSchema, postPhoto: string, postId: string, slug: string) {
  return await prisma.post.update({
     where: {
         id: postId,
@@ -12,6 +12,7 @@ export async function updatePost(postData: TPostSchema, postPhoto: string, postI
         title: postData.title,
         content: postData.content,
         titlePhoto: postPhoto,
+        slug: slug
     }
  })   
 }
