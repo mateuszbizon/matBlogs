@@ -9,7 +9,7 @@ import { getSinglePostController } from "../controllers/posts/getSinglePost.cont
 const router = express.Router()
 
 router.post("/create-post", authenticationMiddleware, upload.single("image"), createPostController)
-router.put("/update-post/:postId", authenticationMiddleware, upload.single("image"), updatePostController)
+router.patch("/update-post/:postId", authenticationMiddleware, upload.single("image"), updatePostController)
 router.delete("/delete-post/:postId", authenticationMiddleware, deletePostController)
 router.get("/get-post/:slug", getSinglePostController)
 
