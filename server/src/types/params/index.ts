@@ -9,3 +9,5 @@ export type TDeletePostParams = TParams<["postId"]>
 export type TGetSinglePostParams = TParams<["slug"]>
 
 export type TUpdateUserParams = TParams<["userId"]>
+
+export type TUpdateUserProfileParams = TParams<["userId"]>
