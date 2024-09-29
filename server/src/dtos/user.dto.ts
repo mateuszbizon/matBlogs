@@ -1,8 +1,8 @@
 import { z } from "zod"
 
-const usernameMinLength = 5
-const usernameMaxLength = 20
-const usernameLengthMessage = `Length of username must be between ${usernameMinLength} and ${usernameMaxLength}.`
+export const usernameMinLength = 5
+export const usernameMaxLength = 20
+export const usernameLengthMessage = `Length of username must be between ${usernameMinLength} and ${usernameMaxLength}.`
 
 export const userSchema = z.object({
     username: z.string().min(usernameMinLength, usernameLengthMessage).max(usernameMaxLength, usernameLengthMessage),
