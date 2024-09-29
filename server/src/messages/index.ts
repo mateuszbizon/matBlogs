@@ -2,6 +2,8 @@ export const messages = {
     user: {
         usernameAlreadyExists: "User with given username already exists.",
         userCreated: "User created.",
+        userNotFound: "User with given id not found.",
+        userUpdated: "User updated."
     },
     post: {
         postCreated: "Post created.",
@@ -23,6 +25,7 @@ export const messages = {
     },
     forbidden: {
         notPostAuthor: "You are not author of that post.",
+        notAuthor: "You are not auhtor of that profile."
     },
     file: {
         fileNotProvided: "File was not provided."

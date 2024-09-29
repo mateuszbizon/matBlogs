@@ -30,3 +30,5 @@ export type TDeletePostResponse = {
 export type TGetSinglePostResponse = {
     post: TPost | null
 }
+
+export type TUpdateUserResponse = TSignUpResponse
