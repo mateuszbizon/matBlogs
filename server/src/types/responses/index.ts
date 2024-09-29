@@ -1,4 +1,4 @@
-import { TPost, TUser } from "../models";
+import { TPost, TProfile, TUser } from "../models";
 
 export type TMainResponse<Data = any> = {
     statusCode: number;
@@ -32,3 +32,7 @@ export type TGetSinglePostResponse = {
 }
 
 export type TUpdateUserResponse = TSignUpResponse
+
+export type TUpdateUserProfileResponse = {
+    profile: TProfile
+}
