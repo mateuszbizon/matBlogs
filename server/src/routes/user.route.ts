@@ -6,7 +6,7 @@ import { authenticationMiddleware } from "../middlewares/authentication.middlewa
 import { updateUserController } from "../controllers/users/updateUser.controller";
 import { upload } from "../utils/upload";
 import { updateUserProfileController } from "../controllers/users/updateUserProfile.controller";
-import { getSingleUserController } from "../controllers/users/getCompleteUser.controller";
+import { getSingleUserController } from "../controllers/users/getSingleUser.controller";
 
 const router = express.Router();
 
