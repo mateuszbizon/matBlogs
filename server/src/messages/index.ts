@@ -16,7 +16,9 @@ export const messages = {
         postSlugAlreadyExists: "Post with given title already exists."
     },
     comment: {
-        commentCreated: "Comment created."
+        commentCreated: "Comment created.",
+        commentNotFound: "Comment with given id not found.",
+        commentDeleted: "Comment deleted."
     },
     database: {
         databaseFail: "Database problems. Try again later."
@@ -30,7 +32,8 @@ export const messages = {
     },
     forbidden: {
         notPostAuthor: "You are not author of that post.",
-        notAuthor: "You are not auhtor of that profile."
+        notAuthor: "You are not author of that profile.",
+        notCommentAuthor: "You are not author of that comment."
     },
     file: {
         fileNotProvided: "File was not provided."
