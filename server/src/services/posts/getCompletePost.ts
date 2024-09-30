@@ -13,7 +13,11 @@ export async function getCompletePost(slug: string) {
                 user: true,
             }
         },
-        comments: true,
+        _count: {
+            select: {
+                comments: true
+            }
+        }
     }
  }) 
 }

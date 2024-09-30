@@ -14,4 +14,5 @@ export type TDeletePostResponse = {
 
 export type TGetSinglePostResponse = {
     post: TPost
+    commentsAmount: number
 }

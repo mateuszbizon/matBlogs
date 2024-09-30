@@ -25,7 +25,18 @@ export async function getSinglePostController(
             statusCode: 200, 
             message: messages.post.postRetrieved, 
             data: {
-                post: existingPost
+                post: {
+                    id: existingPost.id,
+                    title: existingPost.title,
+                    content: existingPost.content,
+                    slug: existingPost.slug,
+                    titlePhoto: existingPost.titlePhoto,
+                    createdAt: existingPost.createdAt,
+                    updatedAt: existingPost.updatedAt,
+                    authorId: existingPost.authorId,
+                    postRatings: existingPost.postRatings
+                },
+                commentsAmount: existingPost._count.comments
             }
         })
     } catch (error) {
