@@ -18,7 +18,8 @@ export const messages = {
     comment: {
         commentCreated: "Comment created.",
         commentNotFound: "Comment with given id not found.",
-        commentDeleted: "Comment deleted."
+        commentDeleted: "Comment deleted.",
+        commentReplyCreated: "Reply to comment created."
     },
     database: {
         databaseFail: "Database problems. Try again later."

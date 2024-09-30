@@ -17,3 +17,5 @@ export type TGetCompleteUserParams = TParams<["username"]>
 export type TCreateCommentParams = TParams<["postId"]>
 
 export type TDeleteCommentParams = TParams<["commentId"]>
+
+export type TCreateCommentReplyParams = TParams<["commentId", "username"]>

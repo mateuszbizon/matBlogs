@@ -8,9 +8,9 @@ import bcrypt from "bcryptjs"
 import { fromZodError } from "zod-validation-error"
 import { messages } from "../../messages";
 import { TMainResponse } from "../../types/responses";
-import { TSignUpResponse } from "../../types/responses/user.response";
+import { TUserResponse } from "../../types/responses/user.response";
 
-export async function signUpController(req: Request<{}, {}, TUserSchema>, res: Response<TMainResponse<TSignUpResponse>>, next: NextFunction) {
+export async function signUpController(req: Request<{}, {}, TUserSchema>, res: Response<TMainResponse<TUserResponse>>, next: NextFunction) {
     const { username, name, password } = req.body
 
     try {

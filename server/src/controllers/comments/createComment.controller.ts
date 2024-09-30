@@ -9,11 +9,11 @@ import { NotFoundError } from "../../errors/NotFoundError";
 import { messages } from "../../messages";
 import { createComment } from "../../services/comments/createComment.service";
 import { TMainResponse } from "../../types/responses";
-import { TCreateCommentResponse } from "../../types/responses/comment.response";
+import { TCommentReponse } from "../../types/responses/comment.response";
 
 export async function createCommentController(
     req: Request<TCreateCommentParams, {}, TCommentSchema>, 
-    res: Response<TMainResponse<TCreateCommentResponse>>, 
+    res: Response<TMainResponse<TCommentReponse>>, 
     next: NextFunction
 ) {
     const { content } = req.body

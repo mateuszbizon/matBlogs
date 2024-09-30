@@ -5,14 +5,14 @@ import { DatabaseError } from "../../errors/DatabaseError";
 import { fromZodError } from "zod-validation-error"
 import { messages } from "../../messages";
 import { TMainResponse } from "../../types/responses";
-import { TUpdateUserResponse } from "../../types/responses/user.response";
+import { TUserResponse } from "../../types/responses/user.response";
 import { TUpdateUserSchema, updateUserSchema } from "../../dtos/updateUser.dto";
 import { TUpdateUserParams } from "../../types/params";
 import { updateUser } from "../../services/users/updateUser.service";
 import { getUserById } from "../../services/users/getUserById.service";
 import { ForbiddenError } from "../../errors/ForbiddenError";
 
-export async function updateUserController(req: Request<TUpdateUserParams, {}, TUpdateUserSchema>, res: Response<TMainResponse<TUpdateUserResponse>>, next: NextFunction) {
+export async function updateUserController(req: Request<TUpdateUserParams, {}, TUpdateUserSchema>, res: Response<TMainResponse<TUserResponse>>, next: NextFunction) {
     const { username, name } = req.body
     const { userId } = req.params
 

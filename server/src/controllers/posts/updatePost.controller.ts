@@ -15,11 +15,11 @@ import { TMainResponse } from "../../types/responses";
 import { ForbiddenError } from "../../errors/ForbiddenError";
 import { generateSlug } from "../../utils/generateSlug";
 import { getPostBySlug } from "../../services/posts/getPostBySlug";
-import { TUpdatePostResponse } from "../../types/responses/post.response";
+import { TPostReponse } from "../../types/responses/post.response";
 
 export async function updatePostController(
     req: Request<TUpdatePostParams, {}, TPostSchema>, 
-    res: Response<TMainResponse<TUpdatePostResponse>>, 
+    res: Response<TMainResponse<TPostReponse>>, 
     next: NextFunction
 ) {      
     const { title, content } = req.body
