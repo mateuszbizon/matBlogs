@@ -6,6 +6,7 @@ import { authenticationMiddleware } from "../middlewares/authentication.middlewa
 import { updateUserController } from "../controllers/users/updateUser.controller";
 import { upload } from "../utils/upload";
 import { updateUserProfileController } from "../controllers/users/updateUserProfile.controller";
+import { getSingleUserController } from "../controllers/users/getCompleteUser.controller";
 
 const router = express.Router();
 
@@ -14,5 +15,6 @@ router.post("/sign-in", signInController);
 router.get("/verify-jwt", verifyJwtController);
 router.patch("/update-user/:userId", authenticationMiddleware, updateUserController)
 router.put("/update-user-profile/:userId", authenticationMiddleware, upload.single("image"), updateUserProfileController)
+router.get("/get-user/:username", getSingleUserController)
 
 export default router;

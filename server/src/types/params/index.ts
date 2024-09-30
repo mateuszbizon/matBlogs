@@ -11,3 +11,5 @@ export type TGetSinglePostParams = TParams<["slug"]>
 export type TUpdateUserParams = TParams<["userId"]>
 
 export type TUpdateUserProfileParams = TParams<["userId"]>
+
+export type TGetCompleteUserParams = TParams<["username"]>

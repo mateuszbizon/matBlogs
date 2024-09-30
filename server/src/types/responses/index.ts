@@ -36,3 +36,8 @@ export type TUpdateUserResponse = TSignUpResponse
 export type TUpdateUserProfileResponse = {
     profile: TProfile
 }
+
+export type TGetSingleUserResponse = {
+    user: TUser
+    postsAmount: number
+}
