@@ -4,7 +4,8 @@ import { BadRequestError } from "../../errors/BadRequestError";
 import { DatabaseError } from "../../errors/DatabaseError";
 import { fromZodError } from "zod-validation-error"
 import { messages } from "../../messages";
-import { TMainResponse, TUpdateUserResponse } from "../../types/responses";
+import { TMainResponse } from "../../types/responses";
+import { TUpdateUserResponse } from "../../types/responses/user.response";
 import { TUpdateUserSchema, updateUserSchema } from "../../dtos/updateUser.dto";
 import { TUpdateUserParams } from "../../types/params";
 import { updateUser } from "../../services/users/updateUser.service";

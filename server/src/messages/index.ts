@@ -2,9 +2,10 @@ export const messages = {
     user: {
         usernameAlreadyExists: "User with given username already exists.",
         userCreated: "User created.",
-        userNotFound: "User with given id not found.",
+        userNotFound: "User not found.",
         userUpdated: "User updated.",
-        userProfileUpdated: "User profile updated."
+        userProfileUpdated: "User profile updated.",
+        userRetrieved: "User retrieved."
     },
     post: {
         postCreated: "Post created.",

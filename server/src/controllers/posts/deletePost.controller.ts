@@ -5,8 +5,9 @@ import { NotFoundError } from "../../errors/NotFoundError";
 import { messages } from "../../messages";
 import { ForbiddenError } from "../../errors/ForbiddenError";
 import { deletePost } from "../../services/posts/deletePost.service";
-import { TDeletePostResponse, TMainResponse } from "../../types/responses";
+import { TMainResponse } from "../../types/responses";
 import { DatabaseError } from "../../errors/DatabaseError";
+import { TDeletePostResponse } from "../../types/responses/post.response";
 
 export async function deletePostController(req: Request<TDeletePostParams>, res: Response<TMainResponse<TDeletePostResponse>>, next: NextFunction) {
     const { postId } = req.params

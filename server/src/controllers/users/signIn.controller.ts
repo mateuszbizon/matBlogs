@@ -7,7 +7,8 @@ import { messages } from "../../messages";
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import { fromZodError } from "zod-validation-error";
-import { TMainResponse, TSignInResponse } from "../../types/responses";
+import { TMainResponse } from "../../types/responses";
+import { TSignInResponse } from "../../types/responses/user.response";
 
 export async function signInController(req: Request<{}, {}, TSignInSchema>, res: Response<TMainResponse<TSignInResponse>>, next: NextFunction) {
     const { username, password } = req.body
