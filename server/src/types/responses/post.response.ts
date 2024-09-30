@@ -1,14 +1,6 @@
 import { TPost } from "../models"
 
-export type TCreatePostResponse = {
-    post: TPost
-}
-
-export type TUpdatePostResponse = {
-    post: TPost
-}
-
-export type TDeletePostResponse = {
+export type TPostReponse = {
     post: TPost
 }
 

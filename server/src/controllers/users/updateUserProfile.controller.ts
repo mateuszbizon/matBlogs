@@ -10,12 +10,12 @@ import { fromZodError } from "zod-validation-error";
 import { uploadImageToCloudinary } from "../../utils/cloudinary";
 import { updateUserProfile } from "../../services/users/updateUserProfile.service";
 import { TMainResponse } from "../../types/responses";
-import { TUpdateUserProfileResponse } from "../../types/responses/user.response";
+import { TProfileResponse } from "../../types/responses/user.response";
 import { deleteTemporaryFile } from "../../utils/deleteFile";
 
 export async function updateUserProfileController(
     req: Request<TUpdateUserProfileParams>, 
-    res: Response<TMainResponse<TUpdateUserProfileResponse>>, 
+    res: Response<TMainResponse<TProfileResponse>>, 
     next: NextFunction
 ) {
     const photo = req.file

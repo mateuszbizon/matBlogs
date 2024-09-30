@@ -6,13 +6,13 @@ import { NotFoundError } from "../../errors/NotFoundError";
 import { messages } from "../../messages";
 import { TMainResponse } from "../../types/responses";
 import { getCommentById } from "../../services/comments/getCommentById.service";
-import { TDeleteCommentResponse } from "../../types/responses/comment.response";
+import { TCommentReponse } from "../../types/responses/comment.response";
 import { deleteComment } from "../../services/comments/deleteComment.service";
 import { ForbiddenError } from "../../errors/ForbiddenError";
 
 export async function deleteCommentController(
     req: Request<TDeleteCommentParams>, 
-    res: Response<TMainResponse<TDeleteCommentResponse>>, 
+    res: Response<TMainResponse<TCommentReponse>>, 
     next: NextFunction
 ) {
     const { commentId } = req.params

@@ -1,9 +1,5 @@
 import { TComment } from "../models"
 
-export type TCreateCommentResponse = {
-    comment: TComment
-}
-
-export type TDeleteCommentResponse = {
+export type TCommentReponse = {
     comment: TComment
 }

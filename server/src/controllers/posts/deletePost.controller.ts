@@ -7,9 +7,9 @@ import { ForbiddenError } from "../../errors/ForbiddenError";
 import { deletePost } from "../../services/posts/deletePost.service";
 import { TMainResponse } from "../../types/responses";
 import { DatabaseError } from "../../errors/DatabaseError";
-import { TDeletePostResponse } from "../../types/responses/post.response";
+import { TPostReponse } from "../../types/responses/post.response";
 
-export async function deletePostController(req: Request<TDeletePostParams>, res: Response<TMainResponse<TDeletePostResponse>>, next: NextFunction) {
+export async function deletePostController(req: Request<TDeletePostParams>, res: Response<TMainResponse<TPostReponse>>, next: NextFunction) {
     const { postId } = req.params
 
     try {
