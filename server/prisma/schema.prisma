@@ -15,6 +15,8 @@ model User {
   profile  Profile?
   posts    Post[]
   postRatings PostRating[]
+  comments Comment[]
+  commentReplies CommentReply[]
 }
 
 model Profile {
@@ -44,6 +46,8 @@ model Comment {
   post         Post   @relation(fields: [postId], references: [id])
   postId       String
   commentReplies CommentReply[]
+  author User @relation(fields: [authorId], references: [id])
+  authorId String
 }
 
 model CommentReply {
@@ -52,6 +56,8 @@ model CommentReply {
   replyinyTo String
   comment    Comment @relation(fields: [commentId], references: [id])
   commentId  String
+  author User @relation(fields: [authorId], references: [id])
+  authorId String
 }
 
 model PostRating {
