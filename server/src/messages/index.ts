@@ -15,6 +15,9 @@ export const messages = {
         postRetrieved: "Post retrieved.",
         postSlugAlreadyExists: "Post with given title already exists."
     },
+    comment: {
+        commentCreated: "Comment created."
+    },
     database: {
         databaseFail: "Database problems. Try again later."
     },
