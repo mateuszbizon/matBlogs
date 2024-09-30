@@ -4,7 +4,8 @@ import { TGetCompleteUserParams } from "../../types/params";
 import { getCompleteUser } from "../../services/users/getCompleteUser.service";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { messages } from "../../messages";
-import { TGetSingleUserResponse, TMainResponse } from "../../types/responses";
+import { TMainResponse } from "../../types/responses";
+import { TGetSingleUserResponse } from "../../types/responses/user.response";
 
 export async function getSingleUserController(
     req: Request<TGetCompleteUserParams>, 

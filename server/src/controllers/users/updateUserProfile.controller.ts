@@ -9,7 +9,8 @@ import { BadRequestError } from "../../errors/BadRequestError";
 import { fromZodError } from "zod-validation-error";
 import { uploadImageToCloudinary } from "../../utils/cloudinary";
 import { updateUserProfile } from "../../services/users/updateUserProfile.service";
-import { TMainResponse, TUpdateUserProfileResponse } from "../../types/responses";
+import { TMainResponse } from "../../types/responses";
+import { TUpdateUserProfileResponse } from "../../types/responses/user.response";
 import { deleteTemporaryFile } from "../../utils/deleteFile";
 
 export async function updateUserProfileController(

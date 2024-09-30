@@ -2,9 +2,10 @@ import { NextFunction, Request, Response } from "express";
 import { TGetSinglePostParams } from "../../types/params";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { messages } from "../../messages";
-import { TGetSinglePostResponse, TMainResponse } from "../../types/responses";
+import { TMainResponse } from "../../types/responses";
 import { DatabaseError } from "../../errors/DatabaseError";
 import { getCompletePost } from "../../services/posts/getCompletePost";
+import { TGetSinglePostResponse } from "../../types/responses/post.response";
 
 export async function getSinglePostController(
     req: Request<TGetSinglePostParams>, 

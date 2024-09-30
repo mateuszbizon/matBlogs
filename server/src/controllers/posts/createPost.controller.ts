@@ -8,9 +8,10 @@ import { BadRequestError } from "../../errors/BadRequestError";
 import { uploadImageToCloudinary } from "../../utils/cloudinary";
 import { fromZodError } from "zod-validation-error";
 import { fileSchema } from "../../dtos/file.dto";
-import { TCreatePostResponse, TMainResponse } from "../../types/responses";
+import { TMainResponse } from "../../types/responses";
 import { getPostBySlug } from "../../services/posts/getPostBySlug";
 import { generateSlug } from "../../utils/generateSlug";
+import { TCreatePostResponse } from "../../types/responses/post.response";
 
 export async function createPostController(req: Request<{}, {}, TPostSchema>, res: Response<TMainResponse<TCreatePostResponse>>, next: NextFunction) {
     const { title, content } = req.body

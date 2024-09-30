@@ -11,10 +11,11 @@ import { updatePost } from "../../services/posts/updatePost.service";
 import { TUpdatePostParams } from "../../types/params";
 import { getPostById } from "../../services/posts/getPostById.service";
 import { NotFoundError } from "../../errors/NotFoundError";
-import { TMainResponse, TUpdatePostResponse } from "../../types/responses";
+import { TMainResponse } from "../../types/responses";
 import { ForbiddenError } from "../../errors/ForbiddenError";
 import { generateSlug } from "../../utils/generateSlug";
 import { getPostBySlug } from "../../services/posts/getPostBySlug";
+import { TUpdatePostResponse } from "../../types/responses/post.response";
 
 export async function updatePostController(
     req: Request<TUpdatePostParams, {}, TPostSchema>, 
