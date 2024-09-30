@@ -13,3 +13,5 @@ export type TUpdateUserParams = TParams<["userId"]>
 export type TUpdateUserProfileParams = TParams<["userId"]>
 
 export type TGetCompleteUserParams = TParams<["username"]>
+
+export type TCreateCommentParams = TParams<["postId"]>

@@ -5,6 +5,8 @@ export type TUser = {
     profile?: TProfile | null;
     posts?: TPost[];
     postRatings?: TPostRating[];
+    comments?: TComment[];
+    commentReplies?: TCommentReply[];
 }
 
 export type TProfile = {
@@ -31,6 +33,7 @@ export type TComment = {
     content: string;
     postId: string;
     commentReplies?: TCommentReply[];
+    authorId: string;
 };
 
 export type TCommentReply = {
@@ -38,6 +41,7 @@ export type TCommentReply = {
     content: string;
     replyingTo: string;
     commentId: string;
+    authorId: string
 };  
 
 export type TPostRating = {
