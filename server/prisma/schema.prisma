@@ -43,7 +43,7 @@ model Post {
 model Comment {
   id           String @id @default(uuid())
   content      String
-  post         Post   @relation(fields: [postId], references: [id])
+  post         Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId       String
   commentReplies CommentReply[]
   author User @relation(fields: [authorId], references: [id])
@@ -54,7 +54,7 @@ model CommentReply {
   id         String  @id @default(uuid())
   content    String
   replyingTo String
-  comment    Comment @relation(fields: [commentId], references: [id])
+  comment    Comment @relation(fields: [commentId], references: [id], onDelete: Cascade)
   commentId  String
   author User @relation(fields: [authorId], references: [id])
   authorId String
