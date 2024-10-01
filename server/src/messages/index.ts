@@ -5,7 +5,8 @@ export const messages = {
         userNotFound: "User not found.",
         userUpdated: "User updated.",
         userProfileUpdated: "User profile updated.",
-        userRetrieved: "User retrieved."
+        userRetrieved: "User retrieved.",
+        usersRetrieved: "Users rertieved."
     },
     post: {
         postCreated: "Post created.",
@@ -23,6 +24,9 @@ export const messages = {
     },
     rating: {
         postRated: "Post rated."
+    },
+    search: {
+        searchEmpty: "Search value can't be empty."
     },
     database: {
         databaseFail: "Database problems. Try again later."
