@@ -49,6 +49,7 @@ export async function updateUserController(req: Request<TUpdateUserParams, {}, T
             }
         })
     } catch (error) {
+        console.error(error)
         next(new DatabaseError())
     }
 }

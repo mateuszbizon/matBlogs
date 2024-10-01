@@ -77,6 +77,7 @@ export async function updatePostController(
             }
         })
     } catch (error) {
+        console.error(error)
         next(new DatabaseError())
     } finally {
         if (postPhoto) {

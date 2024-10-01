@@ -42,7 +42,7 @@ export async function createCommentController(
             }
         })
     } catch (error) {
-        console.error()
+        console.error(error)
         next(new DatabaseError())
     }
 }

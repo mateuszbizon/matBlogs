@@ -3,11 +3,13 @@ import { authenticationMiddleware } from "../middlewares/authentication.middlewa
 import { createCommentController } from "../controllers/comments/createComment.controller"
 import { deleteCommentController } from "../controllers/comments/deleteComment.controller"
 import { createCommentReplyController } from "../controllers/comments/createCommentReply.controller"
+import { deleteCommentReplyController } from "../controllers/comments/deleteCommentReply.controller"
 
 const router = express.Router()
 
 router.post("/create-comment/:postId", authenticationMiddleware, createCommentController)
 router.delete("/delete-comment/:commentId", authenticationMiddleware, deleteCommentController)
 router.post("/create-comment-reply/:commentId/:username", authenticationMiddleware, createCommentReplyController)
+router.delete("/delete-comment-reply/:commentReplyId", authenticationMiddleware, deleteCommentReplyController)
 
 export default router

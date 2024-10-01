@@ -38,6 +38,7 @@ export async function signUpController(req: Request<{}, {}, TUserSchema>, res: R
             }
         })
     } catch (error) {
+        console.error(error)
         next(new DatabaseError())
     }
 }
