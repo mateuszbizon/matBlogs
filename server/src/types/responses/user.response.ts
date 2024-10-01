@@ -20,4 +20,5 @@ export type TGetSingleUserResponse = {
 
 export type TSearchUsersResponse = {
     users: TUser[]
+    usersLength: number
 }

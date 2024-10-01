@@ -26,6 +26,7 @@ export async function searchUsersController(
             message: messages.user.usersRetrieved,
             data: {
                 users: users,
+                usersLength: users.length
             }
         })
     } catch (error) {
