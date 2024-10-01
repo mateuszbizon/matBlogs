@@ -21,3 +21,5 @@ export type TDeleteCommentParams = TParams<["commentId"]>
 export type TCreateCommentReplyParams = TParams<["commentId", "username"]>
 
 export type TDeleteCommentReplyParams = TParams<["commentReplyId"]>
+
+export type TRatePostParams = TParams<["postId"]>
