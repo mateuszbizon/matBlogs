@@ -37,7 +37,7 @@ export async function deleteCommentReplyController(
             }
         })
     } catch (error) {
-        console.error()
+        console.error(error)
         next(new DatabaseError())
     }
 }

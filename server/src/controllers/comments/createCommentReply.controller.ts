@@ -49,7 +49,7 @@ export async function createCommentReplyController(
             }
         })
     } catch (error) {
-        console.error()
+        console.error(error)
         next(new DatabaseError())
     }
 }

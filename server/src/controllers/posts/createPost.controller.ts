@@ -58,6 +58,7 @@ export async function createPostController(req: Request<{}, {}, TPostSchema>, re
             }
         })
     } catch (error) {
+        console.error(error)
         next(new DatabaseError())
     } finally {
         if (postPhoto) {

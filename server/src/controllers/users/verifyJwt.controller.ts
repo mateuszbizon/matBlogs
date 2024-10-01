@@ -19,6 +19,7 @@ export function verifyJwtController(req: Request, res: Response<TMainResponse>, 
             message: messages.auth.userStillSignedIn
         })
     } catch (error) {
+        console.error(error)
         next(new AuthenticationError())
     }
 }

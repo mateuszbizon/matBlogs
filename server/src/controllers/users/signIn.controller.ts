@@ -43,6 +43,7 @@ export async function signInController(req: Request<{}, {}, TSignInSchema>, res:
             }
         })
     } catch (error) {
+        console.error(error)
         next(new DatabaseError())
     }
 }
