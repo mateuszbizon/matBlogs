@@ -17,3 +17,8 @@ export type TGetSingleUserResponse = {
     user: TUser
     postsAmount: number
 }
+
+export type TSearchUsersResponse = {
+    users: TUser[]
+    usersLength: number
+}
