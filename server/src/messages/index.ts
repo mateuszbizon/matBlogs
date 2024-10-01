@@ -6,7 +6,7 @@ export const messages = {
         userUpdated: "User updated.",
         userProfileUpdated: "User profile updated.",
         userRetrieved: "User retrieved.",
-        usersRetrieved: "Users rertieved."
+        usersRetrieved: "Users retrieved."
     },
     post: {
         postCreated: "Post created.",
