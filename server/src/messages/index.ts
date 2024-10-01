@@ -21,6 +21,9 @@ export const messages = {
         commentDeleted: "Comment deleted.",
         commentReplyCreated: "Reply to comment created."
     },
+    rating: {
+        postRated: "Post rated."
+    },
     database: {
         databaseFail: "Database problems. Try again later."
     },
