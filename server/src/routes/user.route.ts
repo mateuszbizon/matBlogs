@@ -7,6 +7,7 @@ import { updateUserController } from "../controllers/users/updateUser.controller
 import { upload } from "../utils/upload";
 import { updateUserProfileController } from "../controllers/users/updateUserProfile.controller";
 import { getSingleUserController } from "../controllers/users/getSingleUser.controller";
+import { searchUsersController } from "../controllers/users/searchUsers.controller";
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.get("/verify-jwt", verifyJwtController);
 router.patch("/update-user/:userId", authenticationMiddleware, updateUserController)
 router.put("/update-user-profile/:userId", authenticationMiddleware, upload.single("image"), updateUserProfileController)
 router.get("/get-user/:username", getSingleUserController)
+router.get("/search-users", searchUsersController)
 
 export default router;
