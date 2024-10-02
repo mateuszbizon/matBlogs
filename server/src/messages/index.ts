@@ -14,7 +14,8 @@ export const messages = {
         postUpdated: "Post updated.",
         postDeleted: "Post deleted.",
         postRetrieved: "Post retrieved.",
-        postSlugAlreadyExists: "Post with given title already exists."
+        postSlugAlreadyExists: "Post with given title already exists.",
+        postsRetrieved: "Posts retrieved."
     },
     comment: {
         commentCreated: "Comment created.",

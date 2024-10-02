@@ -8,3 +8,7 @@ export type TGetSinglePostResponse = {
     post: TPost
     commentsAmount: number
 }
+
+export type TSearchPostsResponse = {
+    posts: TPost[]
+}
