@@ -7,3 +7,7 @@ export type TCommentReponse = {
 export type TCommentReplyResponse = {
     commentReply: TCommentReply
 }
+
+export type TGetPostCommentsResponse = {
+    comments: TComment[]
+}
