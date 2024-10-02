@@ -21,7 +21,8 @@ export const messages = {
         commentCreated: "Comment created.",
         commentNotFound: "Comment with given id not found.",
         commentDeleted: "Comment deleted.",
-        commentReplyCreated: "Reply to comment created."
+        commentReplyCreated: "Reply to comment created.",
+        commentsRetrieved: "Comments retrieved."
     },
     rating: {
         postRated: "Post rated."
