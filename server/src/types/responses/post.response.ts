@@ -12,3 +12,7 @@ export type TGetSinglePostResponse = {
 export type TSearchPostsResponse = {
     posts: TPost[]
 }
+
+export type TGetUserPostsResponse = {
+    posts: TPost[]
+}

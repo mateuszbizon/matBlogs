@@ -6,6 +6,7 @@ import { updatePostController } from "../controllers/posts/updatePost.controller
 import { deletePostController } from "../controllers/posts/deletePost.controller"
 import { getSinglePostController } from "../controllers/posts/getSinglePost.controller"
 import { searchPostsController } from "../controllers/posts/searchPosts.controller"
+import { getUserPostsController } from "../controllers/posts/getUserPosts.controller"
 
 const router = express.Router()
 
@@ -14,5 +15,6 @@ router.patch("/update-post/:postId", authenticationMiddleware, upload.single("im
 router.delete("/delete-post/:postId", authenticationMiddleware, deletePostController)
 router.get("/get-post/:slug", getSinglePostController)
 router.get("/search-posts", searchPostsController)
+router.get("/get-user-posts/:userId", getUserPostsController)
 
 export default router
