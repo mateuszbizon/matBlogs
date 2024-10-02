@@ -5,3 +5,5 @@ type TQuery<T extends string[]> = {
 export type TSearchUsersQueryParams = TQuery<["search"]>
 
 export type TSearchPostsQueryParams = TQuery<["search"]>
+
+export type TGetUserPostsQueryParams = TQuery<["page", "sort"]>
