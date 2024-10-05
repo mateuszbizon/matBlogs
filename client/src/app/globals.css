@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --primary: #F18F01;
+    --light: #FFF7ED;
+    --dark: #402E32;
+}
+
+@layer components {
+    .main-container {
+        @apply w-full max-w-[1300px] px-5 mx-auto
+    }
+}
