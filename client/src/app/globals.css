@@ -12,4 +12,12 @@
     .main-container {
         @apply w-full max-w-[1300px] px-5 mx-auto
     }
+
+    .button-common {
+        @apply px-4 py-2 rounded-xl
+    }
+
+    .button-primary {
+        @apply bg-primary text-dark
+    }
 }
