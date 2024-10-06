@@ -1,10 +1,15 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
 import ButtonLink from '../ui/ButtonLink'
 import Link from 'next/link'
 import NavItemsList from './NavItemsList'
 import MenuBarsIcon from '../icons/MenuBarsIcon'
+import NavMobile from './NavMobile'
 
 function Nav() {
+    const [navMobileOpen, setNavMobileOpen] = useState(false)
+
   return (
     <nav className='bg-light fixed left-0 top-0 w-full py-2 z-10'>
         <div className='main-container flex'>
@@ -19,13 +24,15 @@ function Nav() {
                 <ButtonLink href='/' className='hidden lg:block'>
                     My profile
                 </ButtonLink>
-                <button className='lg:hidden p-2 text-dark hover:bg-black/20 rounded-full'>
+                <button className='lg:hidden p-2 text-dark hover:bg-black/20 rounded-full' onClick={() => setNavMobileOpen(true)}>
                     <div className='size-5'>
                         <MenuBarsIcon />
                     </div>
                 </button>
             </div>
         </div>
+
+        <NavMobile navMobileOpen={navMobileOpen} setNavMobileOpen={setNavMobileOpen} />
     </nav>
   )
 }
