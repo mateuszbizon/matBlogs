@@ -20,4 +20,8 @@
     .button-primary {
         @apply bg-primary text-dark
     }
+
+    .nav-link {
+        @apply text-lg text-dark font-medium hover:text-primary transition duration-300
+    }
 }
