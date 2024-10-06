@@ -20,7 +20,7 @@ function Nav() {
                     My profile
                 </ButtonLink>
                 <button className='lg:hidden p-2 text-dark hover:bg-black/20 rounded-full'>
-                    <div className='w-5 h-5'>
+                    <div className='size-5'>
                         <MenuBarsIcon />
                     </div>
                 </button>
