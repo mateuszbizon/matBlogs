@@ -2,6 +2,7 @@ import React from 'react'
 import ButtonLink from '../ui/ButtonLink'
 import Link from 'next/link'
 import NavItemsList from './NavItemsList'
+import MenuBarsIcon from '../icons/MenuBarsIcon'
 
 function Nav() {
   return (
@@ -14,10 +15,15 @@ function Nav() {
                 </div>
             </div>
 
-            <div className='ml-auto'>
+            <div className='ml-auto flex items-center'>
                 <ButtonLink href='/' className='hidden lg:block'>
                     My profile
                 </ButtonLink>
+                <button className='lg:hidden p-2 text-dark hover:bg-black/20 rounded-full'>
+                    <div className='w-5 h-5'>
+                        <MenuBarsIcon />
+                    </div>
+                </button>
             </div>
         </div>
     </nav>
