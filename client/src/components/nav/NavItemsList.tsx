@@ -4,6 +4,7 @@ import NavItemCard from './NavItemCard'
 import NavSearchItem from './NavSearchItem'
 
 const NAV_ITEMS: TNavItem[] = [
+    { name: "Home", isLink: true, href: "/" },
     { name: "Create blog", isLink: true, href: "/create-blog" },
     { name: "Search", isLink: false, content: <NavSearchItem /> },
 ]
