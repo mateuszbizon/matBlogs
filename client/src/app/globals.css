@@ -14,6 +14,10 @@
         @apply w-full max-w-[1300px] px-5 mx-auto
     }
 
+    .main-padding-y {
+        @apply pt-[100px]
+    }
+
     .button-common {
         @apply px-6 py-2 rounded-xl transition duration-300
     }
@@ -24,5 +28,9 @@
 
     .nav-link {
         @apply text-lg text-dark font-medium hover:text-primary transition duration-300
+    }
+
+    .heading1 {
+        @apply text-4xl sm:text-5xl lg:text-6xl font-bold text-dark
     }
 }
