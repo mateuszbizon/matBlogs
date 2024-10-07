@@ -1,9 +1,11 @@
 import { TNavItem } from '@/types'
 import React from 'react'
 import NavItemCard from './NavItemCard'
+import NavSearchItem from './NavSearchItem'
 
 const NAV_ITEMS: TNavItem[] = [
     { name: "Create blog", isLink: true, href: "/create-blog" },
+    { name: "Search", isLink: false, content: <NavSearchItem /> },
 ]
 
 function NavItemsList() {
