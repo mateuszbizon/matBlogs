@@ -13,7 +13,8 @@ const config: Config = {
         "primary-hover": "var(--primary-hover)",
         light: "var(--light)",
         dark: "var(--dark)",
-        grey: "var(--grey)"
+        grey: "var(--grey)",
+        error: "var(--error)"
       },
     },
   },

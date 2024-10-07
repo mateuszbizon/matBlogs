@@ -9,6 +9,7 @@ function SignUpPage() {
                 <div className='form-box'>
                     <label htmlFor="name" className='label'>Imię</label>
                     <input id='name' type="text" className='input' placeholder='Imię' />
+                    <span className='input-error-message'>Name can't be empty.</span>
                 </div>
             </form>
         </div>
