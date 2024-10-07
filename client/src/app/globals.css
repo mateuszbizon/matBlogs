@@ -7,6 +7,7 @@
     --primary-hover: #F56157;
     --light: #FFF7ED;
     --dark: #402E32;
+    --grey: #DFE0DF;
 }
 
 @layer components {
@@ -16,6 +17,10 @@
 
     .main-padding-y {
         @apply pt-[100px]
+    }
+
+    .auth-container {
+        @apply w-full max-w-[500px] p-5 mx-auto bg-white rounded-2xl
     }
 
     .button-common {
@@ -32,5 +37,21 @@
 
     .heading1 {
         @apply text-4xl sm:text-5xl lg:text-6xl font-bold text-dark
+    }
+
+    .heading2 {
+        @apply text-3xl sm:text-4xl lg:text-5xl font-semibold text-dark
+    }
+
+    .form-box {
+        @apply mb-8 flex flex-col
+    }
+
+    .label {
+        @apply text-dark text-lg mb-1 font-medium
+    }
+
+    .input {
+        @apply py-2 px-4 rounded-lg text-dark border border-grey placeholder:text-dark
     }
 }
