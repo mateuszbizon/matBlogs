@@ -8,7 +8,7 @@ const NAV_ITEMS: TNavItem[] = [
 
 function NavItemsList() {
   return (
-    <ul className='flex flex-col lg:flex-row gap-5 items-center'>
+    <ul className='flex flex-col lg:flex-row gap-5 lg:items-center'>
         {NAV_ITEMS.map(item => {
             return (
                 <NavItemCard key={item.name} navItem={item} />
