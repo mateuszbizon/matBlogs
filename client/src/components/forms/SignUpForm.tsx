@@ -5,14 +5,17 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Button from '../ui/Button'
+import useSignUp from '@/hooks/useSignUp'
 
 function SignUpForm() {
+    const { handleSignUp, isPendingSignUp } = useSignUp()
     const { handleSubmit, register, formState: { errors } } = useForm<TSignUpSchema>({
         resolver: zodResolver(signUpSchema)
     })
 
     function onSubmit(data: TSignUpSchema) {
         console.log(data)
+        handleSignUp(data)
     }
 
   return (
@@ -41,7 +44,7 @@ function SignUpForm() {
             </span>
         </div>
 
-        <Button type='submit' className='w-full'>
+        <Button type='submit' className='w-full' disabled={isPendingSignUp}>
             Sign up
         </Button>
     </form>
