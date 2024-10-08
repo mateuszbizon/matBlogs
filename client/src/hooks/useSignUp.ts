@@ -8,7 +8,14 @@ type UseSignUpProps = {
 
 function useSignUp() {
     const { mutate: handleSignUp, isPending: isPendingSignUp } = useMutation({
-        mutationFn: signUpUser
+        mutationFn: signUpUser,
+        onSuccess: (data) => {
+            console.log(data)
+        },
+        onError: (error: any) => {
+            const errorData = error.response.data
+            console.log(errorData)
+        }
     })
 
   return {
