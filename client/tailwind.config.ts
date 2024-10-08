@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         primary: "var(--primary)",
         "primary-hover": "var(--primary-hover)",
+        "primary-disabled": "var(--primary-disabled)",
         light: "var(--light)",
         dark: "var(--dark)",
         grey: "var(--grey)",

@@ -1,3 +1,4 @@
+import Button from '@/components/ui/Button'
 import React from 'react'
 
 function SignUpPage() {
@@ -11,6 +12,9 @@ function SignUpPage() {
                     <input id='name' type="text" className='input' placeholder='Imię' />
                     <span className='input-error-message'>Name can't be empty.</span>
                 </div>
+                <Button type='submit' className='w-full'>
+                    Sign up
+                </Button>
             </form>
         </div>
     </div>

@@ -5,6 +5,7 @@
 :root {
     --primary: #F18F01;
     --primary-hover: #F56157;
+    --primary-disabled: #FFC0BA;
     --light: #FFF7ED;
     --dark: #402E32;
     --grey: #DFE0DF;
@@ -29,7 +30,7 @@
     }
 
     .button-primary {
-        @apply bg-primary hover:bg-primary-hover
+        @apply bg-primary hover:bg-primary-hover disabled:bg-primary-disabled disabled:cursor-not-allowed
     }
 
     .nav-link {
