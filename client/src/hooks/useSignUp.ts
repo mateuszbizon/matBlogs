@@ -1,15 +1,12 @@
 import { signUpUser } from '@/api/users'
-import { TSignUpSchema } from '@/validations/signUpSchema'
+import { TMainResponse } from '@/types/responses'
+import { TSignUpResponse } from '@/types/responses/user.response'
 import { useMutation } from '@tanstack/react-query'
-
-type UseSignUpProps = {
-    data: TSignUpSchema
-}
 
 function useSignUp() {
     const { mutate: handleSignUp, isPending: isPendingSignUp } = useMutation({
         mutationFn: signUpUser,
-        onSuccess: (data) => {
+        onSuccess: (data: TMainResponse<TSignUpResponse>) => {
             console.log(data)
         },
         onError: (error: any) => {
