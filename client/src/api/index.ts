@@ -1,3 +1,3 @@
 import axios from "axios"
 
-export const API = axios.create({ baseURL: process.env.BACKEND_URL });
+export const API = axios.create({ baseURL: process.env.NEXT_PUBLIC_BACKEND_URL });
