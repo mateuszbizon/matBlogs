@@ -46,7 +46,7 @@
     }
 
     .form-box {
-        @apply mb-8 flex flex-col
+        @apply mb-5 flex flex-col
     }
 
     .label {
