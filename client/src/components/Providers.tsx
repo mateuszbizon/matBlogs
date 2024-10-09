@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { PopupMessageProvider } from '@/context/PopupMessageContext';
 
 type Props = {
     children: React.ReactNode;
@@ -12,7 +13,9 @@ function Providers({ children }: Props) {
 
   return (
     <QueryClientProvider client={queryClient}>
-        {children}
+        <PopupMessageProvider>
+            {children}
+        </PopupMessageProvider>
     </QueryClientProvider>
   )
 }

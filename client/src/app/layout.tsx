@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google"
 import "./globals.css";
 import Nav from "@/components/nav/Nav";
 import Providers from "@/components/Providers";
+import PopupMessage from "@/components/shared/PopupMessage";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
         <body
           className={`${montserrat.className} bg-light`}
         >
+          <PopupMessage />
           <Nav />
           {children}
         </body>

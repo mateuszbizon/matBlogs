@@ -10,6 +10,7 @@
     --dark: #402E32;
     --grey: #DFE0DF;
     --error: #c35557;
+    --success: #228D1A;
 }
 
 @layer components {
