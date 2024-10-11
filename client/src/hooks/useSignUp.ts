@@ -1,17 +1,29 @@
 import { signUpUser } from '@/api/users'
+import { MESSAGES } from '@/constants/messages'
+import { usePopupMessage } from '@/context/PopupMessageContext'
 import { TMainResponse } from '@/types/responses'
 import { TSignUpResponse } from '@/types/responses/user.response'
 import { useMutation } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 
 function useSignUp() {
+    const router = useRouter()
+    const { showSuccessMessage, showErrorMessage } = usePopupMessage()
     const { mutate: handleSignUp, isPending: isPendingSignUp } = useMutation({
         mutationFn: signUpUser,
         onSuccess: (data: TMainResponse<TSignUpResponse>) => {
-            console.log(data)
+            router.push("/sign-in")
+            showSuccessMessage(MESSAGES.user.userCreated)
         },
         onError: (error: any) => {
-            const errorData = error.response.data
-            console.log(errorData)
+            const errorData: TMainResponse = error.response.data
+
+            if (errorData.statusCode == 400) {
+              showErrorMessage(MESSAGES.user.usernameTaken)
+              return
+            }
+
+            showErrorMessage(MESSAGES.user.userNotCreated)
         }
     })
 
