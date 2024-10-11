@@ -19,7 +19,7 @@
     }
 
     .main-padding-y {
-        @apply pt-[100px]
+        @apply pt-[70px] sm:pt-[100px]
     }
 
     .auth-container {
@@ -27,7 +27,7 @@
     }
 
     .button-common {
-        @apply px-6 py-2 rounded-xl transition duration-300
+        @apply px-6 py-2 rounded-xl text-lg transition duration-300
     }
 
     .button-primary {
@@ -36,6 +36,10 @@
 
     .nav-link {
         @apply text-lg text-dark font-medium hover:text-primary transition duration-300
+    }
+
+    .link {
+        @apply text-lg text-primary font-semibold hover:text-dark transition duration-300
     }
 
     .heading1 {
