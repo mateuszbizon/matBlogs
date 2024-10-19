@@ -3,6 +3,7 @@
 import React from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { PopupMessageProvider } from '@/context/PopupMessageContext';
+import { UserAuthProvider } from '@/context/UserAuthContext';
 
 type Props = {
     children: React.ReactNode;
@@ -13,9 +14,11 @@ function Providers({ children }: Props) {
 
   return (
     <QueryClientProvider client={queryClient}>
-        <PopupMessageProvider>
-            {children}
-        </PopupMessageProvider>
+        <UserAuthProvider>
+            <PopupMessageProvider>
+                {children}
+            </PopupMessageProvider>
+        </UserAuthProvider>
     </QueryClientProvider>
   )
 }
