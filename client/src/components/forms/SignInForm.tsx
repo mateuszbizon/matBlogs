@@ -6,14 +6,17 @@ import Button from '../ui/Button'
 import { useForm } from 'react-hook-form'
 import { signInSchema, TSignInSchema } from '@/validations/signInSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import useSignIn from '@/hooks/useSignIn'
 
 function SignInForm() {
+    const { handleSignIn, isPendingSignIn } = useSignIn()
     const { handleSubmit, register, formState: { errors } } = useForm<TSignInSchema>({
         resolver: zodResolver(signInSchema)
     })
 
     function onSubmit(data: TSignInSchema) {
         console.log(data)
+        handleSignIn(data)
     }
 
   return (
@@ -30,8 +33,8 @@ function SignInForm() {
             <InputErrorMessage errors={errors.password} />
         </div>
 
-        <Button type='submit' className='w-full'>
-            Sign In
+        <Button type='submit' className='w-full' disabled={isPendingSignIn}>
+            {isPendingSignIn ? "Signing In..." : "Sign In"}
         </Button>
     </form>
   )
