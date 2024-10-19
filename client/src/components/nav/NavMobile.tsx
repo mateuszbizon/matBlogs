@@ -1,9 +1,11 @@
 "use client"
 
-import React, { useState } from 'react'
+import React from 'react'
 import MenuBarsIcon from '../icons/MenuBarsIcon'
 import NavItemsList from './NavItemsList';
 import Shadow from '../Shadow';
+import ButtonLink from '../ui/ButtonLink';
+import { useUserAuth } from '@/context/UserAuthContext';
 
 type NavMobileProps = {
     navMobileOpen: boolean;
@@ -11,6 +13,8 @@ type NavMobileProps = {
 }
 
 function NavMobile({ navMobileOpen, setNavMobileOpen }: NavMobileProps) {
+    const { isSignedIn, userData } = useUserAuth()
+
   return (
     <>
         <div className={`fixed top-0 right-0 ${navMobileOpen ? "translate-x-0" : "translate-x-full"} w-[200px] h-screen bg-white py-2 z-30 transition-all duration-300 lg:hidden`}>
@@ -24,6 +28,12 @@ function NavMobile({ navMobileOpen, setNavMobileOpen }: NavMobileProps) {
                 </div>
 
                 <NavItemsList />
+                
+                <div className='mt-5 flex justify-center'>
+                    <ButtonLink href={isSignedIn ? "/my-profile" : "sign-in"}>
+                        {isSignedIn ? "My profile" : "Sign In"}
+                    </ButtonLink>
+                </div>
             </div>
         </div>
 

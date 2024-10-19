@@ -6,11 +6,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 type TUserAuthContext = {
     saveUser: (user: TSignInResponse) => void;
     userData: TSignInResponse | null
+    isSignedIn: boolean
 }
 
 const UserAuthContext = createContext<TUserAuthContext>({
     saveUser: () => {},
-    userData: null
+    userData: null,
+    isSignedIn: false
 })
 
 export function useUserAuth() {
@@ -35,7 +37,8 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
 
     const value: TUserAuthContext = {
         saveUser,
-        userData
+        userData,
+        isSignedIn: userData ? true : false
     }
 
   return (
