@@ -40,7 +40,7 @@ function SignUpForm() {
         </div>
 
         <Button type='submit' className='w-full' disabled={isPendingSignUp}>
-            Sign up
+            {isPendingSignUp ? "Signing up..." : "Sign up"}
         </Button>
     </form>
   )

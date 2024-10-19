@@ -4,6 +4,7 @@ import { usePopupMessage } from '@/context/PopupMessageContext'
 import { TMainResponse } from '@/types/responses'
 import { TSignUpResponse } from '@/types/responses/user.response'
 import { useMutation } from '@tanstack/react-query'
+import { AxiosError } from 'axios'
 import { useRouter } from 'next/navigation'
 
 function useSignUp() {
@@ -15,10 +16,8 @@ function useSignUp() {
             router.push("/sign-in")
             showSuccessMessage(MESSAGES.user.userCreated)
         },
-        onError: (error: any) => {
-            const errorData: TMainResponse = error.response.data
-
-            if (errorData.statusCode == 400) {
+        onError: (error: AxiosError<TMainResponse>) => {
+            if (error.response?.status == 400) {
               showErrorMessage(MESSAGES.user.usernameTaken)
               return
             }
