@@ -26,13 +26,12 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user") || "false")
+        const user = localStorage.getItem("user")
 
         if (user) {
-            setUserData(user)
+            setUserData(JSON.parse(user))
         }
-    }, [])
-    
+    }, [])    
 
     const value: TUserAuthContext = {
         saveUser,
