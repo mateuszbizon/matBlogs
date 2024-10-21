@@ -5,10 +5,11 @@ import React, { useEffect } from 'react'
 import userProfileDefault from "@/assets/user_profile_default.png"
 import useGetSingleUser from '@/hooks/useGetSingleUser'
 import { useParams } from 'next/navigation'
+import ErrorMessage from '@/components/ErrorMessage'
 
 function UserPage() {
     const params = useParams<{ username: string }>()
-    const { singleUserData, isLoadingSingleUser, isErrorSingleUser } = useGetSingleUser({ username: params.username })
+    const { singleUserData, isLoadingSingleUser, isErrorSingleUser, errorMessage } = useGetSingleUser({ username: params.username })
 
   return (
     <div className='main-container main-padding-y'>
@@ -30,6 +31,7 @@ function UserPage() {
             </>
         )}
         {isLoadingSingleUser && <div>Loading...</div>}
+        {isErrorSingleUser && <ErrorMessage message={errorMessage} />}
     </div>
   )
 }
