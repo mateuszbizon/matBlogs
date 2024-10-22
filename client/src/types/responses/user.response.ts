@@ -17,7 +17,7 @@ export type TSignInResponse = {
     }
 }
 
-export type TGetSingleUserResponse = {
+export type TUserProfile = {
     user: {
         id: TUser["id"];
         name: TUser["name"];

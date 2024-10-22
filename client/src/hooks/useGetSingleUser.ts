@@ -1,7 +1,7 @@
 import { getSingleUser } from "@/api/users";
 import { MESSAGES } from "@/constants/messages";
 import { TMainResponse } from "@/types/responses";
-import { TGetSingleUserResponse } from "@/types/responses/user.response";
+import { TUserProfile } from "@/types/responses/user.response";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
@@ -13,26 +13,26 @@ let errorMessage: string
 
 function useGetSingleUser({ username }: UseGetSingleUserProps) {
 	const {
-		data: singleUserData,
-		isError: isErrorSingleUser,
-		isLoading: isLoadingSingleUser,
+		data: userProfile,
+		isError: isErrorUserProfile,
+		isLoading: isLoadingUserProfile,
 		error
-	} = useQuery<TMainResponse<TGetSingleUserResponse>, AxiosError>({
+	} = useQuery<TMainResponse<TUserProfile>, AxiosError>({
 		queryKey: ["single-user"],
 		queryFn: () => getSingleUser(username),
 		retry: false,
 	});
 
-	if (isErrorSingleUser) {
+	if (isErrorUserProfile) {
 		if (error.response?.status == 404) {
 			errorMessage = MESSAGES.user.userNotFound
 		}
 	}
 
 	return {
-		singleUserData,
-		isLoadingSingleUser,
-		isErrorSingleUser,
+		userProfile,
+		isLoadingUserProfile,
+		isErrorUserProfile,
 		errorMessage
 	};
 }
