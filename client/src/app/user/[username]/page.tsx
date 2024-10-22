@@ -6,6 +6,7 @@ import userProfileDefault from "@/assets/user_profile_default.png"
 import useGetSingleUser from '@/hooks/useGetSingleUser'
 import { useParams } from 'next/navigation'
 import ErrorMessage from '@/components/ErrorMessage'
+import UserProfileLoading from '@/components/loadings/UserProfileLoading'
 
 function UserPage() {
     const params = useParams<{ username: string }>()
@@ -30,7 +31,7 @@ function UserPage() {
                 </div>
             </>
         )}
-        {isLoadingSingleUser && <div>Loading...</div>}
+        {isLoadingSingleUser && <UserProfileLoading />}
         {isErrorSingleUser && <ErrorMessage message={errorMessage} />}
     </div>
   )
