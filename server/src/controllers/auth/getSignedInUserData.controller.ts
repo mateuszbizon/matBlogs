@@ -5,7 +5,7 @@ import { messages } from "../../messages";
 import { TMainResponse } from "../../types/responses";
 import { TSignInResponse } from "../../types/responses/user.response";
 
-export function verifyJwtController(req: Request, res: Response<TMainResponse<TSignInResponse>>, next:NextFunction) {
+export function getSignedInUserDataController(req: Request, res: Response<TMainResponse<TSignInResponse>>, next:NextFunction) {
     try {
         const token = req.cookies.authToken
 

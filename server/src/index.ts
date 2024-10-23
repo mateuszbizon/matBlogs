@@ -8,6 +8,7 @@ import userRoutes from "./routes/user.route"
 import postRoutes from "./routes/post.route"
 import commentRoutes from "./routes/comment.route"
 import ratingsRoutes from "./routes/rating.route"
+import authRoutes from "./routes/auth.route"
 
 dotenv.config()
 
@@ -26,6 +27,7 @@ app.use("/users", userRoutes)
 app.use("/posts", postRoutes)
 app.use("/comments", commentRoutes)
 app.use("/ratings", ratingsRoutes)
+app.use("/auth", authRoutes)
 
 app.use(errorHandler)
 
