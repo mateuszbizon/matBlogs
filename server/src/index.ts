@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import bodyParser from "body-parser"
+import cookieParser from "cookie-parser"
 import cors from "cors"
 import errorHandler from "./utils/errorHandler"
 import userRoutes from "./routes/user.route"
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 })
 
 app.use(bodyParser.json())
+app.use(cookieParser())
 app.use(cors())
 
 app.use("/users", userRoutes)

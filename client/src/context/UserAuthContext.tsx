@@ -23,17 +23,8 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
     const [userData, setUserData] = useState<TSignInResponse | null>(null)
 
     function saveUser(user: TSignInResponse) {
-        localStorage.setItem("user", JSON.stringify(user))
         setUserData(user)
-    }
-
-    useEffect(() => {
-        const user = localStorage.getItem("user")
-
-        if (user) {
-            setUserData(JSON.parse(user))
-        }
-    }, [])    
+    }  
 
     const value: TUserAuthContext = {
         saveUser,

@@ -9,8 +9,9 @@ export type TProfileResponse = {
 }
 
 export type TSignInResponse = {
-    token: string;
-    user: TUser;
+    id: TUser["id"];
+    username: TUser["username"];
+    name: TUser["name"];
 }
 
 export type TGetSingleUserResponse = {

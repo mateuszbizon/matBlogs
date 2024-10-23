@@ -9,12 +9,9 @@ export type TSignUpResponse = {
 }
 
 export type TSignInResponse = {
-    token: string;
-    user: {
-        id: TUser["id"];
-        name: TUser["name"];
-        username: TUser["username"];
-    }
+    id: TUser["id"];
+    name: TUser["name"];
+    username: TUser["username"];
 }
 
 export type TUserProfile = {

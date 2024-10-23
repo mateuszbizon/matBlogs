@@ -32,14 +32,27 @@ export async function signInController(req: Request<{}, {}, TSignInSchema>, res:
             return next(new BadRequestError(messages.auth.invalidSignIn))
         }
 
-        const token = jwt.sign({ id: existingUser.id }, "authToken", { expiresIn: "3h" })
+        const token = jwt.sign({
+            id: existingUser.id, 
+            username: existingUser.username, 
+            name: existingUser.name
+        }, "authToken", { expiresIn: "3d" })
+
+        const isProduction = process.env.NODE_ENV === 'production';
+
+        res.cookie("authToken", token, {
+            httpOnly: true,
+            secure: isProduction,
+            maxAge: 3 * 24 * 60 * 60 * 1000
+        })
 
         res.status(200).json({
             statusCode: 200, 
             message: messages.auth.signedIn, 
             data: {
-                token: token, 
-                user: { id: existingUser.id, name: existingUser.name, username: existingUser.username } 
+                id: existingUser.id, 
+                name: existingUser.name, 
+                username: existingUser.username
             }
         })
     } catch (error) {
