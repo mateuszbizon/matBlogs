@@ -21,7 +21,10 @@ app.get("/", (req, res) => {
 
 app.use(bodyParser.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+}))
 
 app.use("/users", userRoutes)
 app.use("/posts", postRoutes)

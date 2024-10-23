@@ -1,5 +1,7 @@
 "use client"
 
+import { getSignedInUserData } from "@/api/auth";
+import { TMainResponse } from "@/types/responses";
 import { TSignInResponse } from "@/types/responses/user.response";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -25,6 +27,17 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
     function saveUser(user: TSignInResponse) {
         setUserData(user)
     }  
+
+    useEffect(() => {
+      getSignedInUserData().then((data: TMainResponse<TSignInResponse>) => {
+        if (data.data) {
+            setUserData(data.data)
+        }
+      }).catch(() => {
+        setUserData(null)
+      })
+    }, [])
+    
 
     const value: TUserAuthContext = {
         saveUser,
