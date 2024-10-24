@@ -1,21 +1,21 @@
-export type TUser = {
+export type TUserModel = {
     id: string;
     username: string;
     name: string;
-    profile?: TProfile | null;
-    posts?: TPost[];
-    postRatings?: TPostRating[];
-    comments?: TComment[];
-    commentReplies?: TCommentReply[];
+    profile?: TProfileModel | null;
+    posts?: TPostModel[];
+    postRatings?: TPostRatingModel[];
+    comments?: TCommentModel[];
+    commentReplies?: TCommentReplyModel[];
 }
 
-export type TProfile = {
+export type TProfileModel = {
     id: string;
     photo: string;
     userId: string;
 };
 
-export type TPost = {
+export type TPostModel = {
     id: string;
     createdAt: Date;
     updatedAt: Date;
@@ -24,19 +24,19 @@ export type TPost = {
     titlePhoto: string;
     authorId: string;
     slug: string;
-    comments?: TComment[];
-    postRatings?: TPostRating[];
+    comments?: TCommentModel[];
+    postRatings?: TPostRatingModel[];
 };
 
-export type TComment = {
+export type TCommentModel = {
     id: string;
     content: string;
     postId: string;
-    commentReplies?: TCommentReply[];
+    commentReplies?: TCommentReplyModel[];
     authorId: string;
 };
 
-export type TCommentReply = {
+export type TCommentReplyModel = {
     id: string;
     content: string;
     replyingTo: string;
@@ -44,7 +44,7 @@ export type TCommentReply = {
     authorId: string
 };  
 
-export type TPostRating = {
+export type TPostRatingModel = {
     id: string;
     value: number;
     postId: string;
