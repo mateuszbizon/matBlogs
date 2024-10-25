@@ -30,7 +30,7 @@ function NavMobile({ navMobileOpen, setNavMobileOpen }: NavMobileProps) {
                 <NavItemsList />
                 
                 <div className='mt-5 flex justify-center'>
-                    <ButtonLink href={isSignedIn ? "/my-profile" : "sign-in"}>
+                    <ButtonLink href={isSignedIn ? "/my-profile" : "/sign-in"}>
                         {isSignedIn ? "My profile" : "Sign In"}
                     </ButtonLink>
                 </div>

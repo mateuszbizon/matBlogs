@@ -23,7 +23,7 @@ function Nav() {
             </div>
 
             <div className='ml-auto flex items-center'>
-                <ButtonLink href={isSignedIn ? "/my-profile" : "sign-in"} className='hidden lg:block'>
+                <ButtonLink href={isSignedIn ? "/my-profile" : "/sign-in"} className='hidden lg:block'>
                     {isSignedIn ? "My profile" : "Sign In"}
                 </ButtonLink>
                 <button className='lg:hidden p-2 text-dark hover:bg-black/20 rounded-full' onClick={() => setNavMobileOpen(true)}>
