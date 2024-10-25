@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query"
 type UseGetUserPostsProps = {
     userId: string;
     page: number;
-    sort: string;
+    sort?: string;
 }
 
 function useGetUserPosts({ userId, page, sort }: UseGetUserPostsProps) {

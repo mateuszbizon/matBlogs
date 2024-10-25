@@ -4,7 +4,7 @@ import React from 'react'
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     children: React.ReactNode;
-    variant?: "primary";
+    variant?: "primary" | "secondary" | "white";
 }
 
 const buttonVariants = cva(
@@ -13,6 +13,8 @@ const buttonVariants = cva(
         variants: {
             variant: {
                 primary: "button-primary",
+                secondary: "button-secondary",
+                white: "button-white",
             },
         } ,
         defaultVariants: {

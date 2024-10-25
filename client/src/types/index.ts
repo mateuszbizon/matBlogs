@@ -9,3 +9,7 @@ export type TNavItem = {
     isLink: false;
     content: ReactNode
 })
+
+export type TPostFilters = {
+    sort?: "asc" | "desc"
+}

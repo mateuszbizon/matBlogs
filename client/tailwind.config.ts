@@ -14,6 +14,7 @@ const config: Config = {
         "primary-disabled": "var(--primary-disabled)",
         light: "var(--light)",
         dark: "var(--dark)",
+        "dark-hover": "var(--dark-hover)",
         grey: "var(--grey)",
         error: "var(--error)",
         success: "var(--success)"
