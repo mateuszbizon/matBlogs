@@ -14,8 +14,14 @@ function UserPage() {
 
   return (
     <div className='main-container main-padding-y'>
-        {userProfile?.data && <UserProfile profile={userProfile.data} />}
-        {userProfile?.data && <UserPosts userId={userProfile.data.user.id} />}
+        {userProfile?.data && (
+            <>
+                <UserProfile profile={userProfile.data} />
+                <div className='mt-10'>
+                    <UserPosts userId={userProfile.data.user.id} />
+                </div>
+            </>
+        )}
         {isLoadingUserProfile && <UserProfileLoading />}
         {isErrorUserProfile && <ErrorMessage message={errorMessage} />}
     </div>
