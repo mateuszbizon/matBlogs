@@ -28,7 +28,7 @@
     }
 
     .button-common {
-        @apply px-6 py-2 rounded-xl transition duration-300
+        @apply rounded-xl transition duration-300
     }
 
     .button-primary {

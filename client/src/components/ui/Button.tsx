@@ -5,6 +5,7 @@ import React from 'react'
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     children: React.ReactNode;
     variant?: "primary" | "secondary" | "white";
+    padding?: "small" | "medium";
 }
 
 const buttonVariants = cva(
@@ -16,16 +17,21 @@ const buttonVariants = cva(
                 secondary: "button-secondary",
                 white: "button-white",
             },
+            padding: {
+                small: "px-3 py-2",
+                medium: "px-6 py-2",
+            }
         } ,
         defaultVariants: {
             variant: "primary",
+            padding: "medium"
         }
     }
 )
 
-function Button({children, variant, className, ...props}: Props) {
+function Button({children, variant, padding, className, ...props}: Props) {
   return (
-    <button {...props} className={cn(buttonVariants({ variant }), className)}>
+    <button {...props} className={cn(buttonVariants({ variant, padding }), className)}>
         {children}
     </button>
   )

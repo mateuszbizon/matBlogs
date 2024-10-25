@@ -18,8 +18,8 @@ function UserPostsFilters({ onChange }: UserPostsFiltersProps) {
 
   return (
     <div className='flex space-x-4'>
-        <Button variant={sort === "desc" ? "secondary" : "white"} className='p-2' onClick={() => setSort("desc")}>Latest</Button>
-        <Button variant={sort === "asc" ? "secondary" : "white"} className='p-2' onClick={() => setSort("asc")}>Oldest</Button>
+        <Button variant={sort === "desc" ? "secondary" : "white"} padding='small' onClick={() => setSort("desc")}>Latest</Button>
+        <Button variant={sort === "asc" ? "secondary" : "white"} padding='small' onClick={() => setSort("asc")}>Oldest</Button>
     </div>
   )
 }
