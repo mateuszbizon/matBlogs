@@ -13,3 +13,8 @@ export type TNavItem = {
 export type TPostFilters = {
     sort?: "asc" | "desc"
 }
+
+export type TImage = {
+    file: File;
+    url: string;
+}
