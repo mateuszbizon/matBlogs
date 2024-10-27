@@ -9,15 +9,18 @@ import InputErrorMessage from './InputErrorMessage'
 import { FieldError, useForm } from 'react-hook-form'
 import { blogSchema, TBlogSchema } from '@/validations/blogSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Editor from './Editor'
 
 function BlogForm() {
     const { changeImage } = useChangeImage()
     const [titlePhoto, setTitlePhoto] = useState<TImage | null>(null)
+    const [content, setContent] = useState("")
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<TBlogSchema>({
         resolver: zodResolver(blogSchema),
         defaultValues: {
             title: "",
-            titlePhoto: titlePhoto?.file
+            titlePhoto: titlePhoto?.file,
+            content: content
         }
     })
 
@@ -28,6 +31,11 @@ function BlogForm() {
         setValue("titlePhoto", image?.file)
     }
 
+    function handleChangeContent(newValue: string) {
+        setContent(newValue)
+        setValue("content", newValue)
+    }
+
     function onSubmit(data: TBlogSchema) {
         console.log(data)
 
@@ -35,6 +43,7 @@ function BlogForm() {
 
         formData.append("title", data.title)
         formData.append("image", data.titlePhoto)
+        formData.append("content", data.content)
     }
 
   return (
@@ -68,6 +77,12 @@ function BlogForm() {
         </div>
 
         <div>
+            <div className='form-box'>
+                <label className='label'>Content</label>
+                <Editor value={content} onChange={handleChangeContent} />
+                <InputErrorMessage errors={errors.content} />
+            </div>
+
             <div className='flex'>
                 <Button className='w-full max-w-[300px] mx-auto'>Create Blog</Button>
             </div>

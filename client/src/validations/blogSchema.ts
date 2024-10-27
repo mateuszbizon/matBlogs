@@ -7,6 +7,7 @@ const acceptedFileTypes = ["image/jpeg", "image/png", "image/gif"]
 
 export const blogSchema = z.object({
     title: z.string().min(titleMinLength, titleLengthMessage).max(titleMaxLength, titleLengthMessage),
+    content: z.string().min(1, "Content can't be empty."),
     titlePhoto: z.any().refine(
         (file) => {
             return acceptedFileTypes.includes(file?.type)
