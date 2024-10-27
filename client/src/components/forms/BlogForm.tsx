@@ -10,8 +10,10 @@ import { blogSchema, TBlogSchema } from '@/validations/blogSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Editor from './Editor'
 import ImageFormHolder from './ImageFormHolder'
+import useCreatePost from '@/hooks/useCreatePost'
 
 function BlogForm() {
+    const { handleCreatePost, isCreatingPostPending } = useCreatePost()
     const { changeImage } = useChangeImage()
     const [titlePhoto, setTitlePhoto] = useState<TImage | null>(null)
     const [content, setContent] = useState("")
@@ -44,6 +46,8 @@ function BlogForm() {
         formData.append("title", data.title)
         formData.append("image", data.titlePhoto)
         formData.append("content", data.content)
+
+        handleCreatePost(formData)
     }
 
   return (
@@ -78,7 +82,9 @@ function BlogForm() {
             </div>
 
             <div className='flex'>
-                <Button className='w-full max-w-[300px] mx-auto'>Create Blog</Button>
+                <Button className='w-full max-w-[300px] mx-auto' disabled={isCreatingPostPending}>
+                    {isCreatingPostPending ? "Creating Blog..." : "Create Blog"}
+                </Button>
             </div>
         </div>
     </form>

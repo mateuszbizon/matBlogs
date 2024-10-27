@@ -5,3 +5,9 @@ export async function getUserPosts(userId: string, page: number, sort?: string) 
 
     return data
 }
+
+export async function createPost(postData: FormData) {
+    const { data } = await API.post("/posts/create-post", postData)
+
+    return data
+}

@@ -11,3 +11,9 @@ export type TUserPost = {
     slug: TPostModel["slug"]
     authorId: TPostModel["authorId"]
 }
+
+export type TCreatedPost = {
+    post: {
+        slug: TPostModel["slug"]
+    }
+}

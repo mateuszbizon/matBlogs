@@ -6,5 +6,9 @@ export const MESSAGES = {
         userCredentialsIncorrect: "Username or password incorrect",
         userCantSignIn: "Can't sign in. Try again later",
         userNotFound: "User not found"
+    },
+    post: {
+        postCreated: "Blog post created",
+        postNotCreated: "Can't create blog post. Try again later",
     }
 }
