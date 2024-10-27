@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react'
 import Button from '../ui/Button'
-import Image from 'next/image'
 import useChangeImage from '@/hooks/useChangeImage'
 import { TImage } from '@/types'
 import InputErrorMessage from './InputErrorMessage'
@@ -10,6 +9,7 @@ import { FieldError, useForm } from 'react-hook-form'
 import { blogSchema, TBlogSchema } from '@/validations/blogSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Editor from './Editor'
+import ImageFormHolder from './ImageFormHolder'
 
 function BlogForm() {
     const { changeImage } = useChangeImage()
@@ -64,14 +64,8 @@ function BlogForm() {
                 </div>
                 <InputErrorMessage errors={errors.titlePhoto as FieldError} />
 
-                <div className={`w-full aspect-video mt-2 ${!titlePhoto && "border border-primary"}`}>
-                    {titlePhoto ? (
-                        <Image src={titlePhoto.url} width={200} height={200} alt='Chosen photo' className='w-full h-full object-cover' />
-                    ) : (
-                        <div className='flex justify-center items-center text-dark h-full font-semibold text-lg'>
-                            Choose file to see it here.
-                        </div>
-                    )}
+                <div className='mt-2'>
+                    <ImageFormHolder photo={titlePhoto} />
                 </div>
             </div>
         </div>
