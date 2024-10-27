@@ -12,6 +12,7 @@ import Editor from './Editor'
 import ImageFormHolder from './ImageFormHolder'
 import useCreatePost from '@/hooks/useCreatePost'
 import Input from '../ui/Input'
+import Label from '../ui/Label'
 
 function BlogForm() {
     const { handleCreatePost, isCreatingPostPending } = useCreatePost()
@@ -55,17 +56,17 @@ function BlogForm() {
     <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-1 md:grid-cols-2 md:gap-5'>
         <div>
             <div className='form-box'>
-                <label htmlFor="title" className='label'>Title</label>
+                <Label htmlFor="title">Title</Label>
                 <Input {...register("title")} id='title' type="text" variant={errors.title && "primary-error"} placeholder='Title' />
                 <InputErrorMessage errors={errors.title} />
             </div>
 
             <div className='form-box'>
                 <div className='flex'>
-                    <label htmlFor="title-photo" className='button-white p-3 button-common cursor-pointer'>
+                    <Label htmlFor="title-photo" variant='file'>
                         Title photo. Choose file
                         <input id='title-photo' type="file" className='hidden' onChange={handleChangeImage} />
-                    </label>
+                    </Label>
                 </div>
                 <InputErrorMessage errors={errors.titlePhoto as FieldError} />
 
@@ -77,7 +78,7 @@ function BlogForm() {
 
         <div>
             <div className='form-box'>
-                <label className='label'>Content</label>
+                <Label>Content</Label>
                 <Editor value={content} onChange={handleChangeContent} />
                 <InputErrorMessage errors={errors.content} />
             </div>
