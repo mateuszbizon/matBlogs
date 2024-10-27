@@ -5,23 +5,45 @@ import Button from '../ui/Button'
 import Image from 'next/image'
 import useChangeImage from '@/hooks/useChangeImage'
 import { TImage } from '@/types'
+import InputErrorMessage from './InputErrorMessage'
+import { FieldError, useForm } from 'react-hook-form'
+import { blogSchema, TBlogSchema } from '@/validations/blogSchema'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 function BlogForm() {
     const { changeImage } = useChangeImage()
     const [titlePhoto, setTitlePhoto] = useState<TImage | null>(null)
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm<TBlogSchema>({
+        resolver: zodResolver(blogSchema),
+        defaultValues: {
+            title: "",
+            titlePhoto: titlePhoto?.file
+        }
+    })
 
     function handleChangeImage(event: React.ChangeEvent<HTMLInputElement>) {
         const image = changeImage(event)
 
         setTitlePhoto(image)
+        setValue("titlePhoto", image?.file)
+    }
+
+    function onSubmit(data: TBlogSchema) {
+        console.log(data)
+
+        const formData = new FormData()
+
+        formData.append("title", data.title)
+        formData.append("image", data.titlePhoto)
     }
 
   return (
-    <form className='grid grid-cols-1 md:grid-cols-2 md:gap-5'>
+    <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-1 md:grid-cols-2 md:gap-5'>
         <div>
             <div className='form-box'>
                 <label htmlFor="title" className='label'>Title</label>
-                <input id='title' type="text" className='input' />
+                <input {...register("title")} id='title' type="text" className='input' />
+                <InputErrorMessage errors={errors.title} />
             </div>
 
             <div className='form-box'>
@@ -31,6 +53,7 @@ function BlogForm() {
                         <input id='title-photo' type="file" className='hidden' onChange={handleChangeImage} />
                     </label>
                 </div>
+                <InputErrorMessage errors={errors.titlePhoto as FieldError} />
 
                 <div className={`w-full aspect-video mt-2 ${!titlePhoto && "border border-primary"}`}>
                     {titlePhoto ? (
