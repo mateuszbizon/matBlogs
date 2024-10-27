@@ -4,6 +4,7 @@ import { usePopupMessage } from '@/context/PopupMessageContext'
 import { TMainResponse } from '@/types/responses'
 import { TCreatedPost } from '@/types/responses/post.response'
 import { useMutation } from '@tanstack/react-query'
+import { AxiosError } from 'axios'
 import { useRouter } from 'next/navigation'
 
 function useCreatePost() {
@@ -17,7 +18,12 @@ function useCreatePost() {
                 router.push(`/blog-post/${data.data.post.slug}`)
             }
         },
-        onError: () => {
+        onError: (error: AxiosError) => {
+            if (error.response?.status == 400) {
+                showErrorMessage(MESSAGES.post.postAlreadyExists)
+                return
+            }
+
             showErrorMessage(MESSAGES.post.postNotCreated)
         }
     })
