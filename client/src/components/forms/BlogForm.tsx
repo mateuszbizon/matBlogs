@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import Editor from './Editor'
 import ImageFormHolder from './ImageFormHolder'
 import useCreatePost from '@/hooks/useCreatePost'
+import Input from '../ui/Input'
 
 function BlogForm() {
     const { handleCreatePost, isCreatingPostPending } = useCreatePost()
@@ -55,7 +56,7 @@ function BlogForm() {
         <div>
             <div className='form-box'>
                 <label htmlFor="title" className='label'>Title</label>
-                <input {...register("title")} id='title' type="text" className='input' />
+                <Input {...register("title")} id='title' type="text" variant={errors.title && "primary-error"} placeholder='Title' />
                 <InputErrorMessage errors={errors.title} />
             </div>
 

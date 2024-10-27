@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { signInSchema, TSignInSchema } from '@/validations/signInSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import useSignIn from '@/hooks/useSignIn'
+import Input from '../ui/Input'
 
 function SignInForm() {
     const { handleSignIn, isPendingSignIn } = useSignIn()
@@ -23,13 +24,13 @@ function SignInForm() {
     <form onSubmit={handleSubmit(onSubmit)}>
         <div className='form-box'>
             <label htmlFor="username" className='label'>Username</label>
-            <input id='username' type="text" {...register("username")} className={`input ${errors.username && "input-error"}`} placeholder='Username' />
+            <Input id='username' type="text" {...register("username")} variant={errors.username && "primary-error"} placeholder='Username' />
             <InputErrorMessage errors={errors.username} />
         </div>
 
         <div className='form-box'>
             <label htmlFor="password" className='label'>Password</label>
-            <input id='password' type="password" {...register("password")} className={`input ${errors.password && "input-error"}`} placeholder='Password' />
+            <Input id='password' type="password" {...register("password")} variant={errors.password && "primary-error"} placeholder='Password' />
             <InputErrorMessage errors={errors.password} />
         </div>
 

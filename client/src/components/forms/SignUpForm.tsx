@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import Button from '../ui/Button'
 import useSignUp from '@/hooks/useSignUp'
 import InputErrorMessage from './InputErrorMessage'
+import Input from '../ui/Input'
 
 function SignUpForm() {
     const { handleSignUp, isPendingSignUp } = useSignUp()
@@ -23,19 +24,19 @@ function SignUpForm() {
     <form onSubmit={handleSubmit(onSubmit)}>
         <div className='form-box'>
             <label htmlFor="name" className='label'>Name</label>
-            <input id='name' type="text" {...register("name")} className={`input ${errors.name && "input-error"}`} placeholder='Name' />
+            <Input id='name' type="text" {...register("name")} variant={errors.name && "primary-error"} placeholder='Name' />
             <InputErrorMessage errors={errors.name} />
         </div>
 
         <div className='form-box'>
             <label htmlFor="username" className='label'>Username</label>
-            <input id='username' type="text" {...register("username")} className={`input ${errors.username && "input-error"}`} placeholder='Username' />
+            <Input id='username' type="text" {...register("username")} variant={errors.username && "primary-error"} placeholder='Username' />
             <InputErrorMessage errors={errors.username} />
         </div>
 
         <div className='form-box'>
             <label htmlFor="password" className='label'>Password</label>
-            <input id='password' type="password" {...register("password")} className={`input ${errors.password && "input-error"}`} placeholder='Password' />
+            <Input id='password' type="password" {...register("password")} variant={errors.password && "primary-error"} placeholder='Password' />
             <InputErrorMessage errors={errors.password} />
         </div>
 
