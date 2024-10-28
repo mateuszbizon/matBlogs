@@ -9,6 +9,7 @@ import useSignUp from '@/hooks/useSignUp'
 import InputErrorMessage from './InputErrorMessage'
 import Input from '../ui/Input'
 import Label from '../ui/Label'
+import FormBox from './FormBox'
 
 function SignUpForm() {
     const { handleSignUp, isPendingSignUp } = useSignUp()
@@ -23,23 +24,23 @@ function SignUpForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='form-box'>
+        <FormBox>
             <Label htmlFor="name">Name</Label>
             <Input id='name' type="text" {...register("name")} variant={errors.name && "primary-error"} placeholder='Name' />
             <InputErrorMessage errors={errors.name} />
-        </div>
+        </FormBox>
 
-        <div className='form-box'>
+        <FormBox>
             <Label htmlFor="username">Username</Label>
             <Input id='username' type="text" {...register("username")} variant={errors.username && "primary-error"} placeholder='Username' />
             <InputErrorMessage errors={errors.username} />
-        </div>
+        </FormBox>
 
-        <div className='form-box'>
+        <FormBox>
             <Label htmlFor="password">Password</Label>
             <Input id='password' type="password" {...register("password")} variant={errors.password && "primary-error"} placeholder='Password' />
             <InputErrorMessage errors={errors.password} />
-        </div>
+        </FormBox>
 
         <Button type='submit' className='w-full' disabled={isPendingSignUp}>
             {isPendingSignUp ? "Signing up..." : "Sign up"}
