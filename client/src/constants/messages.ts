@@ -11,5 +11,6 @@ export const MESSAGES = {
         postCreated: "Blog post created",
         postAlreadyExists: "Blog post with given title already exists",
         postNotCreated: "Can't create blog post. Try again later",
+        postNotFound: "Blog post not found",
     }
 }

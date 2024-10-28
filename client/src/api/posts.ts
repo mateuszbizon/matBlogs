@@ -11,3 +11,9 @@ export async function createPost(postData: FormData) {
 
     return data
 }
+
+export async function getSinglePost(postSlug: string) {
+    const { data } = await API.get(`/posts/get-post/${postSlug}`)
+
+    return data
+}

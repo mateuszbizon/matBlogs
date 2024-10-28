@@ -17,3 +17,8 @@ export type TCreatedPost = {
         slug: TPostModel["slug"]
     }
 }
+
+export type TPost = {
+    post: TPostModel;
+    commentsAmount: number;
+}
