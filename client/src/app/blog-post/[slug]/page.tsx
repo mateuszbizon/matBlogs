@@ -1,6 +1,7 @@
 "use client"
 
 import ErrorMessage from '@/components/ErrorMessage'
+import Post from '@/components/posts/Post'
 import useGetSinglePost from '@/hooks/useGetSinglePost'
 import { useParams } from 'next/navigation'
 import React from 'react'
@@ -14,6 +15,9 @@ function PostPage() {
     <div className='main-container main-padding-y'>
       {isSinglePostLoading && <div>Loading...</div>}
       {isSinglePostError && <ErrorMessage message={errorMessage} />}
+      {singlePost?.data && (
+        <Post post={singlePost.data} />
+      )}
     </div>
   )
 }
