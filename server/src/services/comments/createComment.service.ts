@@ -9,6 +9,16 @@ export async function createComment(comment: TCommentSchema, postId: string, use
             content: comment.content,
             postId: postId,
             authorId: userId
+        },
+        include: {
+            author: {
+                select: {
+                    id: true,
+                    name: true,
+                    username: true,
+                    profile: true,
+                }
+            }
         }
     })
 }

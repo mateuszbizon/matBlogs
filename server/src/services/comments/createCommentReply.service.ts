@@ -10,6 +10,16 @@ export async function createCommentReply(comment: TCommentSchema, commentId: str
             replyingTo: username,
             commentId: commentId,
             authorId: userId
+        },
+        include: {
+            author: {
+                select: {
+                    id: true,
+                    name: true,
+                    username: true,
+                    profile: true,
+                }
+            }
         }
     })
 }

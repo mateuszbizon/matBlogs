@@ -8,7 +8,26 @@ export async function getPostComments(postId: string) {
             postId: postId
         },
         include: {
-            commentReplies: true
+            commentReplies: {
+                include: {
+                    author: {
+                        select: {
+                            id: true,
+                            name: true,
+                            username: true,
+                            profile: true,
+                        }
+                    }
+                }
+            },
+            author: {
+                select: {
+                    id: true,
+                    name: true,
+                    username: true,
+                    profile: true,
+                }
+            }
         }
     })
 }

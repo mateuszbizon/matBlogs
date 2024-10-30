@@ -12,6 +12,7 @@ export type TUser = {
 export type TProfile = {
     id: string;
     photo: string;
+    user?: TUser;
     userId: string;
 };
 
@@ -22,6 +23,7 @@ export type TPost = {
     title: string;
     content: string;
     titlePhoto: string;
+    author?: TUser;
     authorId: string;
     slug: string;
     comments?: TComment[];
@@ -33,6 +35,7 @@ export type TComment = {
     content: string;
     postId: string;
     commentReplies?: TCommentReply[];
+    author?: TUser;
     authorId: string;
 };
 
@@ -40,13 +43,17 @@ export type TCommentReply = {
     id: string;
     content: string;
     replyingTo: string;
+    comment?: TComment;
     commentId: string;
+    author?: TUser;
     authorId: string
 };  
 
 export type TPostRating = {
     id: string;
     value: number;
+    post?: TPost;
     postId: string;
+    user?: TUser;
     userId: string;
 };  

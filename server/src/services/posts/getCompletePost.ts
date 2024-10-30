@@ -10,7 +10,22 @@ export async function getCompletePost(slug: string) {
     include: {
         postRatings: {
             include: {
-                user: true,
+                user: {
+                    select: {
+                        id: true,
+                        name: true,
+                        username: true,
+                        profile: true,
+                    }
+                },
+            }
+        },
+        author: {
+            select: {
+                id: true,
+                name: true,
+                username: true,
+                profile: true,
             }
         },
         _count: {
