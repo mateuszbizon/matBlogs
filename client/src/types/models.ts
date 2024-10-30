@@ -12,6 +12,7 @@ export type TUserModel = {
 export type TProfileModel = {
     id: string;
     photo: string;
+    user?: TUserModel;
     userId: string;
 };
 
@@ -22,6 +23,7 @@ export type TPostModel = {
     title: string;
     content: string;
     titlePhoto: string;
+    author?: TUserModel;
     authorId: string;
     slug: string;
     comments?: TCommentModel[];
@@ -33,6 +35,7 @@ export type TCommentModel = {
     content: string;
     postId: string;
     commentReplies?: TCommentReplyModel[];
+    author?: TUserModel;
     authorId: string;
 };
 
@@ -40,13 +43,17 @@ export type TCommentReplyModel = {
     id: string;
     content: string;
     replyingTo: string;
+    comment?: TCommentModel;
     commentId: string;
+    author?: TUserModel;
     authorId: string
 };  
 
 export type TPostRatingModel = {
     id: string;
     value: number;
+    post?: TPostModel;
     postId: string;
+    user?: TUserModel;
     userId: string;
 };  
