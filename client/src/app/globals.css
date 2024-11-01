@@ -20,7 +20,7 @@
     }
 
     .main-padding-y {
-        @apply pt-[70px] sm:pt-[100px]
+        @apply pt-[70px] sm:pt-[100px] pb-10
     }
 
     .auth-container {
