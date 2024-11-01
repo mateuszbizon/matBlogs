@@ -4,7 +4,7 @@ import React from 'react'
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     children: React.ReactNode;
-    variant?: "primary" | "secondary" | "white";
+    variant?: "primary" | "secondary" | "white" | "primary-no-bg" | "delete-no-bg";
     padding?: "small" | "medium";
 }
 
@@ -16,6 +16,8 @@ const buttonVariants = cva(
                 primary: "button-primary",
                 secondary: "button-secondary",
                 white: "button-white",
+                "primary-no-bg": "button-primary-no-bg",
+                "delete-no-bg": "button-delete-no-bg"
             },
             padding: {
                 small: "px-3 py-2",

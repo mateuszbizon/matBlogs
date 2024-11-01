@@ -2,6 +2,8 @@
 
 import useGetPostComments from '@/hooks/useGetPostComments'
 import React from 'react'
+import PostCommentCard from '../cards/PostCommentCard'
+import PostCommentsList from '../lists/PostCommentsList'
 
 type PostCommentsProps = {
     postId: string
@@ -9,10 +11,18 @@ type PostCommentsProps = {
 
 function PostComments({ postId }: PostCommentsProps) {
     const { postCommentsData } = useGetPostComments({ postId })
-    console.log(postCommentsData?.data?.comments)
 
   return (
-    <div>PostComments</div>
+    <div>
+      {postCommentsData?.data && (
+        <PostCommentsList 
+          comments={postCommentsData.data.comments}
+          renderItem={(comment) => (
+            <PostCommentCard key={comment.id} comment={comment} />
+          )}
+        />
+      )}
+    </div>
   )
 }
 

@@ -35,12 +35,20 @@
         @apply bg-primary hover:bg-primary-hover disabled:bg-primary-disabled disabled:cursor-not-allowed
     }
 
+    .button-primary-no-bg {
+        @apply text-primary hover:text-primary-hover font-medium
+    }
+
     .button-secondary {
         @apply bg-dark hover:bg-dark-hover text-white
     }
 
     .button-white {
         @apply bg-grey hover:bg-white
+    }
+
+    .button-delete-no-bg {
+        @apply text-red-500 hover:text-error font-medium
     }
 
     .nav-link {
