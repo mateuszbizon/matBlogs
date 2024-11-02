@@ -68,7 +68,7 @@
     }
 
     .form-box {
-        @apply mb-5 flex flex-col
+        @apply mb-3 flex flex-col
     }
 
     .label {
