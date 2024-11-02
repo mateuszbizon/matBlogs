@@ -12,6 +12,8 @@ function useGetPostComments({ postId }: Props) {
         queryKey: ["get-post-comments"],
         queryFn: () => getPostComments(postId),
         retry: false,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
     })
 
   return {
