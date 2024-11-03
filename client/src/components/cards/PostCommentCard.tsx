@@ -6,13 +6,14 @@ import Image from 'next/image';
 import React from 'react'
 import Button from '../ui/Button';
 import { useUserAuth } from '@/context/UserAuthContext';
+import ButtonLink from '../ui/ButtonLink';
 
 type PostCommentCardProps = {
     comment: TCommentModel;
 }
 
 function PostCommentCard({ comment }: PostCommentCardProps) {
-    const { isAuthor } = useUserAuth()
+    const { isAuthor, isSignedIn } = useUserAuth()
 
   return (
     <div>
@@ -28,7 +29,11 @@ function PostCommentCard({ comment }: PostCommentCardProps) {
         </div>
 
         <div className='flex space-x-3'>
-            <Button variant='primary-no-bg' padding='small'>Reply</Button>
+            {isSignedIn ? (
+                <Button variant='primary-no-bg' padding='small'>Reply</Button>
+            ) : (
+                <ButtonLink href="/sign-in" variant='primary-no-bg' padding='small'>Reply</ButtonLink>
+            )}
             {isAuthor(comment.authorId) && <Button variant='delete-no-bg' padding='small'>Delete</Button>}
         </div>
     </div>
