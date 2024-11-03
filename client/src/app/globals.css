@@ -47,6 +47,10 @@
         @apply bg-grey hover:bg-white
     }
 
+    .button-delete {
+        @apply bg-red-500 hover:bg-error text-white
+    }
+
     .button-delete-no-bg {
         @apply text-red-500 hover:text-error font-medium
     }
@@ -89,5 +93,9 @@
 
     .input-error-message-show {
         @apply visible
+    }
+
+    .modal {
+        @apply p-5 rounded-xl w-[500px] backdrop:bg-black/30
     }
 }
