@@ -12,6 +12,7 @@ const config: Config = {
         primary: "var(--primary)",
         "primary-hover": "var(--primary-hover)",
         "primary-disabled": "var(--primary-disabled)",
+        secondary: "var(--secondary)",
         light: "var(--light)",
         dark: "var(--dark)",
         "dark-hover": "var(--dark-hover)",

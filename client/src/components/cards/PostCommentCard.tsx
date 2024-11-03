@@ -9,6 +9,7 @@ import { useUserAuth } from '@/context/UserAuthContext';
 import ButtonLink from '../ui/ButtonLink';
 import DeleteModal from '../DeleteModal';
 import useDeletePostComment from '@/hooks/useDeletePostComment';
+import PostCommentReplyForm from '../forms/PostCommentReplyForm';
 
 type PostCommentCardProps = {
     comment: TCommentModel;
@@ -18,6 +19,7 @@ function PostCommentCard({ comment }: PostCommentCardProps) {
     const { handleDeletePostComment, isPendingDeletePostComment } = useDeletePostComment()
     const { isAuthor, isSignedIn } = useUserAuth()
     const [modalOpen, setModalOpen] = useState(false)
+    const [replyOpen, setReplyOpen] = useState(false)
 
   return (
     <div>
@@ -43,11 +45,17 @@ function PostCommentCard({ comment }: PostCommentCardProps) {
 
         <div className='flex space-x-3'>
             {isSignedIn ? (
-                <Button variant='primary-no-bg' padding='small'>Reply</Button>
+                <Button variant='primary-no-bg' padding='small' onClick={() => setReplyOpen(prev => !prev)}>Reply</Button>
             ) : (
                 <ButtonLink href="/sign-in" variant='primary-no-bg' padding='small'>Reply</ButtonLink>
             )}
             {isAuthor(comment.authorId) && <Button variant='delete-no-bg' padding='small' onClick={() => setModalOpen(true)}>Delete</Button>}
+        </div>
+
+        <div className='pl-8'>
+            {replyOpen && comment.author && (
+                <PostCommentReplyForm replyingUsername={comment.author.username} />
+            )}
         </div>
     </div>
   )
