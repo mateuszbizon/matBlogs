@@ -48,7 +48,7 @@
     }
 
     .button-delete {
-        @apply bg-red-500 hover:bg-error text-white
+        @apply bg-red-500 hover:bg-error text-white disabled:bg-primary-disabled disabled:cursor-not-allowed
     }
 
     .button-delete-no-bg {

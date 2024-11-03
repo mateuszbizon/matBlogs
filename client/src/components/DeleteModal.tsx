@@ -7,9 +7,11 @@ type DeleteModalProps = {
     children: React.ReactNode;
     open: boolean;
     onClose: () => void;
+    deleteFn?: () => void;
+    isPending?: boolean;
 }
 
-function DeleteModal({ children, open, onClose }: DeleteModalProps) {
+function DeleteModal({ children, open, onClose, deleteFn, isPending }: DeleteModalProps) {
     const modalRef = useRef<HTMLDialogElement>(null)
 
     function openModal() {
@@ -20,6 +22,12 @@ function DeleteModal({ children, open, onClose }: DeleteModalProps) {
         modalRef.current?.close()
         onClose()
 
+    }
+
+    function handleDelete() {
+        if (deleteFn) {
+            deleteFn()
+        }
     }
 
     useEffect(() => {
@@ -39,7 +47,7 @@ function DeleteModal({ children, open, onClose }: DeleteModalProps) {
 
         <div className='flex space-x-3 justify-center'>
             <Button onClick={closeModal} variant='secondary' padding='small'>Cancel</Button>
-            <Button variant='delete' padding='small'>Delete</Button>
+            <Button variant='delete' padding='small' onClick={handleDelete} disabled={isPending}>Delete</Button>
         </div>
     </dialog>
   )

@@ -7,3 +7,9 @@ export type TPostComments = {
 export type TCreatedComment = {
     comment: TCommentModel;
 }
+
+export type TDeletedComment = {
+    comment: {
+        id: TCommentModel["id"]
+    }
+}

@@ -15,5 +15,6 @@ export const MESSAGES = {
     },
     comment: {
         commentPostNotCreated: "Can't create comment to post. Try again later",
+        commentPostNotDeleted: "Can't delete comment post. Try again later",
     }
 }
