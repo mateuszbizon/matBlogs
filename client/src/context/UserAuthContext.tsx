@@ -9,12 +9,14 @@ type TUserAuthContext = {
     saveUser: (user: TSignInResponse) => void;
     userData: TSignInResponse | null
     isSignedIn: boolean
+    isAuthor: (userId: string) => boolean;
 }
 
 const UserAuthContext = createContext<TUserAuthContext>({
     saveUser: () => {},
     userData: null,
-    isSignedIn: false
+    isSignedIn: false,
+    isAuthor: () => false
 })
 
 export function useUserAuth() {
@@ -26,7 +28,15 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
 
     function saveUser(user: TSignInResponse) {
         setUserData(user)
-    }  
+    }
+    
+    function isAuthor(userId: string): boolean {
+      if (userData?.id === userId) {
+        return true
+      }
+
+      return false
+    }
 
     useEffect(() => {
       getSignedInUserData().then((data: TMainResponse<TSignInResponse>) => {
@@ -42,7 +52,8 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
     const value: TUserAuthContext = {
         saveUser,
         userData,
-        isSignedIn: userData ? true : false
+        isSignedIn: userData ? true : false,
+        isAuthor,
     }
 
   return (

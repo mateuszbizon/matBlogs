@@ -1,14 +1,19 @@
+"use client"
+
 import { TCommentModel } from '@/types/models'
 import profileDefault from "@/assets/user_profile_default.png"
 import Image from 'next/image';
 import React from 'react'
 import Button from '../ui/Button';
+import { useUserAuth } from '@/context/UserAuthContext';
 
 type PostCommentCardProps = {
     comment: TCommentModel;
 }
 
 function PostCommentCard({ comment }: PostCommentCardProps) {
+    const { isAuthor } = useUserAuth()
+
   return (
     <div>
         <div className='flex space-x-3'>
@@ -24,7 +29,7 @@ function PostCommentCard({ comment }: PostCommentCardProps) {
 
         <div className='flex space-x-3'>
             <Button variant='primary-no-bg' padding='small'>Reply</Button>
-            <Button variant='delete-no-bg' padding='small'>Delete</Button>
+            {isAuthor(comment.authorId) && <Button variant='delete-no-bg' padding='small'>Delete</Button>}
         </div>
     </div>
   )
