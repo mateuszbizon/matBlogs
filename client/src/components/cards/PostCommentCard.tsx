@@ -54,7 +54,7 @@ function PostCommentCard({ comment }: PostCommentCardProps) {
 
         <div className='pl-8'>
             {replyOpen && comment.author && (
-                <PostCommentReplyForm replyingUsername={comment.author.username} />
+                <PostCommentReplyForm commentId={comment.id} replyingUsername={comment.author.username} onClose={() => setReplyOpen(false)} />
             )}
         </div>
     </div>

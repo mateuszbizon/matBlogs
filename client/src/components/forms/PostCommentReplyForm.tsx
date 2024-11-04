@@ -9,12 +9,16 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { commentSchema, TCommentSchema } from '@/validations/commentSchema'
 import InputErrorMessage from './InputErrorMessage'
+import useCreatePostReply from '@/hooks/useCreatePostReply'
 
 type PostCommentReplyFormProps = {
     replyingUsername: string;
+    commentId: string;
+    onClose: () => void;
 }
 
-function PostCommentReplyForm({ replyingUsername }: PostCommentReplyFormProps) {
+function PostCommentReplyForm({ replyingUsername, commentId, onClose }: PostCommentReplyFormProps) {
+    const { handleCreatePostCommentReply, isPendingCreatePostCommentReply, isError } = useCreatePostReply()
     const { register, handleSubmit, formState: { errors }, reset } = useForm<TCommentSchema>({
         resolver: zodResolver(commentSchema),
         defaultValues: {
@@ -24,6 +28,15 @@ function PostCommentReplyForm({ replyingUsername }: PostCommentReplyFormProps) {
 
     function onSubmit(data: TCommentSchema) {
         console.log(data)
+        handleCreatePostCommentReply({
+            commentId,
+            replyingUsername,
+            content: data
+        })
+        if (!isError) {
+            reset()
+            onClose()
+        }
     }
 
   return (
@@ -33,7 +46,9 @@ function PostCommentReplyForm({ replyingUsername }: PostCommentReplyFormProps) {
             <Textarea id='content' {...register("content")} variant={errors.content && "primary-error"} placeholder='Reply content'></Textarea>
             <InputErrorMessage errors={errors.content} />
         </FormBox>
-        <Button type='submit'>Reply</Button>
+        <Button type='submit' disabled={isPendingCreatePostCommentReply}>
+            {isPendingCreatePostCommentReply ? "Replying..." : "Reply"}
+        </Button>
     </form>
   )
 }

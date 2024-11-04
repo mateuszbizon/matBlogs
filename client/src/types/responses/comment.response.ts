@@ -1,4 +1,4 @@
-import { TCommentModel } from "../models"
+import { TCommentModel, TCommentReplyModel } from "../models"
 
 export type TPostComments = {
     comments: TCommentModel[];
@@ -12,4 +12,8 @@ export type TDeletedComment = {
     comment: {
         id: TCommentModel["id"]
     }
+}
+
+export type TCreatedCommentReply = {
+    commentReply: TCommentReplyModel;
 }

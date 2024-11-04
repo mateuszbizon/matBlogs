@@ -18,3 +18,15 @@ export async function deletePostComment(commentId: string) {
 
     return data
 }
+
+type CreatePostCommentReplyProps = {
+    commentId: string;
+    replyingUsername: string;
+    content: TCommentSchema;
+}
+
+export async function createPostCommentReply({ commentId, replyingUsername, content }: CreatePostCommentReplyProps) {
+    const { data } = await API.post(`/comments/create-comment-reply/${commentId}/${replyingUsername}`, content)
+
+    return data
+}
