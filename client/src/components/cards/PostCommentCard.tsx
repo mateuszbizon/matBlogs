@@ -10,6 +10,8 @@ import ButtonLink from '../ui/ButtonLink';
 import DeleteModal from '../DeleteModal';
 import useDeletePostComment from '@/hooks/useDeletePostComment';
 import PostCommentReplyForm from '../forms/PostCommentReplyForm';
+import PostCommentRepliesList from '../lists/PostCommentRepliesList';
+import PostCommentReplyCard from './PostCommentReplyCard';
 
 type PostCommentCardProps = {
     comment: TCommentModel;
@@ -56,6 +58,16 @@ function PostCommentCard({ comment }: PostCommentCardProps) {
             {replyOpen && comment.author && (
                 <PostCommentReplyForm commentId={comment.id} replyingUsername={comment.author.username} onClose={() => setReplyOpen(false)} />
             )}
+            <div className='mt-3'>
+                {comment.commentReplies && (
+                    <PostCommentRepliesList 
+                        commentReplies={comment.commentReplies}
+                        renderItem={(reply) => (
+                            <PostCommentReplyCard key={reply.id} reply={reply} />
+                        )}
+                    />
+                )}
+            </div>
         </div>
     </div>
   )
