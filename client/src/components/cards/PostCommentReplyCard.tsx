@@ -41,8 +41,8 @@ function PostCommentReplyCard({ reply }: PostCommentReplyCardProps) {
             {isAuthor(reply.authorId) && <Button variant='delete-no-bg' padding='small' onClick={() => setModalOpen(true)}>Delete</Button>}
         </div>
 
-        <div>
-            {replyOpen && reply.author && (
+        <div className={`${replyOpen ? "max-h-[1000px]" : "max-h-0"} overflow-hidden transition-all duration-500`}>
+            {reply.author && (
                 <PostCommentReplyForm commentId={reply.commentId} replyingUsername={reply.author.username} onClose={() => setReplyOpen(false)} />
             )}
         </div>

@@ -55,9 +55,12 @@ function PostCommentCard({ comment }: PostCommentCardProps) {
         </div>
 
         <div className='pl-8'>
-            {replyOpen && comment.author && (
-                <PostCommentReplyForm commentId={comment.id} replyingUsername={comment.author.username} onClose={() => setReplyOpen(false)} />
-            )}
+            <div className={`${replyOpen ? "max-h-[1000px]" : "max-h-0"} overflow-hidden transition-all duration-500`}>
+                {comment.author && (
+                    <PostCommentReplyForm commentId={comment.id} replyingUsername={comment.author.username} onClose={() => setReplyOpen(false)} />
+                )}
+            </div>
+
             <div className='mt-3'>
                 {comment.commentReplies && (
                     <PostCommentRepliesList 
