@@ -21,6 +21,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
     "react-quill": "^2.0.0",
+    "react-tiny-popover": "^8.1.2",
     "tailwind-merge": "^2.5.3",
     "zod": "^3.23.8"
   },
