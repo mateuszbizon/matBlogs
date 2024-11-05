@@ -1,15 +1,13 @@
 "use client"
 
 import React, { useState } from 'react'
-import ButtonLink from '../ui/ButtonLink'
 import Link from 'next/link'
 import NavItemsList from './NavItemsList'
 import MenuBarsIcon from '../icons/MenuBarsIcon'
 import NavMobile from './NavMobile'
-import { useUserAuth } from '@/context/UserAuthContext'
+import ProfileBtn from './ProfileBtn'
 
 function Nav() {
-    const { isSignedIn, userData } = useUserAuth()
     const [navMobileOpen, setNavMobileOpen] = useState(false)
 
   return (
@@ -23,9 +21,9 @@ function Nav() {
             </div>
 
             <div className='ml-auto flex items-center'>
-                <ButtonLink href={isSignedIn ? "/my-profile" : "/sign-in"} className='hidden lg:block'>
-                    {isSignedIn ? "My profile" : "Sign In"}
-                </ButtonLink>
+                <div className='hidden lg:block'>
+                    <ProfileBtn />
+                </div>
                 <button className='lg:hidden p-2 text-dark hover:bg-black/20 rounded-full' onClick={() => setNavMobileOpen(true)}>
                     <div className='size-5'>
                         <MenuBarsIcon />
