@@ -17,3 +17,10 @@ export type TDeletedComment = {
 export type TCreatedCommentReply = {
     commentReply: TCommentReplyModel;
 }
+
+export type TDeletedCommentReply = {
+    commentReply: {
+        id: TCommentReplyModel["id"];
+        commentId: TCommentReplyModel["commentId"]
+    }
+}

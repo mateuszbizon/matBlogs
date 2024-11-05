@@ -7,12 +7,15 @@ import profileDefault from "@/assets/user_profile_default.png"
 import { TCommentReplyModel } from '@/types/models';
 import PostCommentReplyForm from '../forms/PostCommentReplyForm';
 import Link from 'next/link';
+import useDeletePostReply from '@/hooks/useDeletePostReply';
+import DeleteModal from '../DeleteModal';
 
 type PostCommentReplyCardProps = {
     reply: TCommentReplyModel;
 }
 
 function PostCommentReplyCard({ reply }: PostCommentReplyCardProps) {
+    const { handleDeletePostCommentReply, isPendingDeletePostCommentReply } = useDeletePostReply()
     const { isAuthor, isSignedIn } = useUserAuth()
     const [modalOpen, setModalOpen] = useState(false)
     const [replyOpen, setReplyOpen] = useState(false)
@@ -31,6 +34,15 @@ function PostCommentReplyCard({ reply }: PostCommentReplyCardProps) {
                 </p>
             </div>
         </div>
+
+        <DeleteModal
+            open={modalOpen} 
+            onClose={() => setModalOpen(false)} 
+            deleteFn={() => handleDeletePostCommentReply(reply.id)} 
+            isPending={isPendingDeletePostCommentReply}
+        >
+            Are you sure you want to delete this reply?
+        </DeleteModal>
 
         <div className='flex space-x-3'>
             {isSignedIn ? (

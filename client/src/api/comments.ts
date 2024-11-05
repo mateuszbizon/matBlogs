@@ -30,3 +30,9 @@ export async function createPostCommentReply({ commentId, replyingUsername, cont
 
     return data
 }
+
+export async function deletePostCommentReply(replyId: string) {
+    const { data } = await API.delete(`/comments/delete-comment-reply/${replyId}`)
+
+    return data
+}
