@@ -18,5 +18,9 @@ export const MESSAGES = {
         commentPostNotDeleted: "Can't delete comment post. Try again later",
         commentPostReplyNotCreated: "Can't create comment reply. Try again later",
         commentPostReplyNotDeleted: "Can't delete comment reply. Try again later",
+    },
+    rating: {
+        postRated: "Post rated",
+        postNotRated: "Can't rate post. Try again later"
     }
 }
