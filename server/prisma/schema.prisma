@@ -63,7 +63,7 @@ model CommentReply {
 model PostRating {
   id         String  @id @default(uuid())
   value Float
-  post Post @relation(fields: [postId], references: [id])
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId String
   user User @relation(fields: [userId], references: [id])
   userId String
