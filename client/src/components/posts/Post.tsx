@@ -7,6 +7,7 @@ import PostCommentForm from '../forms/PostCommentForm';
 import PostRating from './PostRating';
 import { useUserAuth } from '@/context/UserAuthContext';
 import PostDelete from './PostDelete';
+import ButtonLink from '../ui/ButtonLink';
 
 type PostProps = {
     post: TPost;
@@ -24,6 +25,9 @@ function Post({ post }: PostProps) {
             </p>
             {isAuthor(post.post.authorId) && (
                 <div className='flex gap-5 justify-center flex-wrap'>
+                    <ButtonLink href={`/edit-blog/${post.post.slug}`} variant='secondary' padding='small'>
+                        Edit post
+                    </ButtonLink>
                     <PostDelete postId={post.post.id} />
                 </div>
             )}
