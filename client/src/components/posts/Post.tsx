@@ -5,12 +5,16 @@ import React from 'react'
 import PostComments from '../comments/PostComments';
 import PostCommentForm from '../forms/PostCommentForm';
 import PostRating from './PostRating';
+import { useUserAuth } from '@/context/UserAuthContext';
+import PostDelete from './PostDelete';
 
 type PostProps = {
     post: TPost;
 }
 
 function Post({ post }: PostProps) {
+    const { isAuthor } = useUserAuth()
+
   return (
     <div>
         <div className='mb-10 flex flex-col space-y-5'>
@@ -18,6 +22,11 @@ function Post({ post }: PostProps) {
             <p className='text-dark font-medium text-lg sm:text-xl md:text-2xl text-center'>
                 Created at: {getCreateDate(post.post.createdAt)}
             </p>
+            {isAuthor(post.post.authorId) && (
+                <div className='flex gap-5 justify-center flex-wrap'>
+                    <PostDelete postId={post.post.id} />
+                </div>
+            )}
         </div>
 
         <figure className='w-full max-w-[800px] mx-auto aspect-video'>

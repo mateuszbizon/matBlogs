@@ -17,3 +17,9 @@ export async function getSinglePost(postSlug: string) {
 
     return data
 }
+
+export async function deletePost(postId: string) {
+    const { data } = await API.delete(`/posts/delete-post/${postId}`)
+
+    return data
+}

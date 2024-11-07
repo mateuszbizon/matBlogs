@@ -22,3 +22,9 @@ export type TPost = {
     post: TPostModel;
     commentsAmount: number;
 }
+
+export type TDeletedPost = {
+    post: {
+        id: TPostModel["id"]
+    }
+}
