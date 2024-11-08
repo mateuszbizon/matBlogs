@@ -2,13 +2,19 @@
 
 import ErrorMessage from '@/components/ErrorMessage'
 import BlogForm from '@/components/forms/BlogForm'
+import { useUserAuth } from '@/context/UserAuthContext'
 import useGetSinglePost from '@/hooks/useGetSinglePost'
-import { useParams } from 'next/navigation'
+import { redirect, useParams } from 'next/navigation'
 import React from 'react'
 
 function EditBlogPage() {
     const { slug } = useParams<{ slug: string }>()
+    const { isAuthor } = useUserAuth()
     const { singlePost, isSinglePostError, isSinglePostLoading, errorMessage } = useGetSinglePost({ slug })
+
+    if (singlePost?.data && !isAuthor(singlePost.data.post.authorId)) {
+      redirect("/")
+    }
 
   return (
     <div className='main-padding-y main-container'>
