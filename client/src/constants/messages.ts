@@ -13,7 +13,9 @@ export const MESSAGES = {
         postNotCreated: "Can't create blog post. Try again later",
         postNotFound: "Blog post not found",
         postDeleted: "Blog post deleted",
-        postNotDeleted: "Can't delete blog post. Try again later"
+        postNotDeleted: "Can't delete blog post. Try again later",
+        postUpdated: "Blog post updated",
+        postNotUpdated: "Can't update blog post. Try again later",
     },
     comment: {
         commentPostNotCreated: "Can't create comment to post. Try again later",

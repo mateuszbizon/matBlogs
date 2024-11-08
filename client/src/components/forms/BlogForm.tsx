@@ -14,20 +14,42 @@ import useCreatePost from '@/hooks/useCreatePost'
 import Input from '../ui/Input'
 import Label from '../ui/Label'
 import FormBox from './FormBox'
+import { TPostModel } from '@/types/models'
+import { getFileFromUrl } from '@/utils/getFileFromUrl'
+import useEditPost from '@/hooks/useEditPost'
 
-function BlogForm() {
-    const { handleCreatePost, isCreatingPostPending } = useCreatePost()
+type BlogFormProps = {
+    post?: {
+        id: TPostModel["id"];
+        content: TPostModel["content"];
+        title: TPostModel["title"];
+        titlePhoto: TPostModel["titlePhoto"];
+    }
+}
+
+function BlogForm({ post }: BlogFormProps) {
+    const { handleCreatePost, isPendingCreatePost } = useCreatePost()
+    const { handleEditPost, isPendingEditPost } = useEditPost()
     const { changeImage } = useChangeImage()
     const [titlePhoto, setTitlePhoto] = useState<TImage | null>(null)
-    const [content, setContent] = useState("")
+    const [content, setContent] = useState(post ? post.content : "")
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<TBlogSchema>({
         resolver: zodResolver(blogSchema),
         defaultValues: {
-            title: "",
-            titlePhoto: titlePhoto?.file,
+            title: post ? post.title : "",
+            titlePhoto: null,
             content: content
         }
     })
+
+    useEffect(() => {
+        if (post) {
+            getFileFromUrl(post.titlePhoto, "edited-file").then((file) => {
+                setTitlePhoto({ file, url: post.titlePhoto })
+                setValue("titlePhoto", file)
+            })
+        }
+    }, [])
 
     function handleChangeImage(event: React.ChangeEvent<HTMLInputElement>) {
         const image = changeImage(event)
@@ -49,6 +71,14 @@ function BlogForm() {
         formData.append("title", data.title)
         formData.append("image", data.titlePhoto)
         formData.append("content", data.content)
+
+        if (post) {
+            handleEditPost({
+                postData: formData,
+                postId: post.id
+            })
+            return
+        }
 
         handleCreatePost(formData)
     }
@@ -85,8 +115,8 @@ function BlogForm() {
             </FormBox>
 
             <div className='flex'>
-                <Button className='w-full max-w-[300px] mx-auto' disabled={isCreatingPostPending}>
-                    {isCreatingPostPending ? "Creating Blog..." : "Create Blog"}
+                <Button className='w-full max-w-[300px] mx-auto' disabled={isPendingCreatePost || isPendingEditPost}>
+                    {post ? isPendingEditPost ? "Editing post..." : "Edit post" : isPendingCreatePost ? "Creating post" : "Create post"}
                 </Button>
             </div>
         </div>

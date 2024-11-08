@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation'
 function useCreatePost() {
     const router = useRouter()
     const { showSuccessMessage, showErrorMessage } = usePopupMessage()
-    const { mutate: handleCreatePost, isPending: isCreatingPostPending } = useMutation({
+    const { mutate: handleCreatePost, isPending: isPendingCreatePost } = useMutation({
         mutationFn: createPost,
         onSuccess: (data: TMainResponse<TCreatedPost>) => {
             if (data.data) {
@@ -30,7 +30,7 @@ function useCreatePost() {
 
   return {
     handleCreatePost,
-    isCreatingPostPending,
+    isPendingCreatePost,
   }
 }
 

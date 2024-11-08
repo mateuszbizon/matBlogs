@@ -23,3 +23,9 @@ export async function deletePost(postId: string) {
 
     return data
 }
+
+export async function editPost({ postData, postId }: { postData: FormData, postId: string }) {
+    const { data } = await API.patch(`/posts/update-post/${postId}`, postData)
+
+    return data
+}
