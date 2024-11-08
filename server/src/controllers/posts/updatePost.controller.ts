@@ -57,7 +57,7 @@ export async function updatePostController(
 
         const existingSlug = await getPostBySlug(slug)
 
-        if (existingSlug) {
+        if (existingSlug && existingSlug.slug !== existingPost.slug) {
             return next(new BadRequestError(messages.post.postSlugAlreadyExists))
         }
 
