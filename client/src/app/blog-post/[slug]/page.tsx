@@ -1,6 +1,7 @@
 "use client"
 
 import ErrorMessage from '@/components/ErrorMessage'
+import CircleLoading from '@/components/loadings/CircleLoading'
 import Post from '@/components/posts/Post'
 import useGetSinglePost from '@/hooks/useGetSinglePost'
 import { useParams } from 'next/navigation'
@@ -13,7 +14,7 @@ function PostPage() {
 
   return (
     <div className='main-container main-padding-y'>
-      {isSinglePostLoading && <div>Loading...</div>}
+      {isSinglePostLoading && <CircleLoading />}
       {isSinglePostError && <ErrorMessage message={errorMessage} />}
       {singlePost?.data && (
         <Post post={singlePost.data} />

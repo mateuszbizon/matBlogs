@@ -2,6 +2,7 @@
 
 import ErrorMessage from '@/components/ErrorMessage'
 import BlogForm from '@/components/forms/BlogForm'
+import CircleLoading from '@/components/loadings/CircleLoading'
 import { useUserAuth } from '@/context/UserAuthContext'
 import useGetSinglePost from '@/hooks/useGetSinglePost'
 import { redirect, useParams } from 'next/navigation'
@@ -24,7 +25,7 @@ function EditBlogPage() {
                 <BlogForm post={singlePost.data.post} />
             </div>
         )}
-        {isSinglePostLoading && <div>Loading...</div>}
+        {isSinglePostLoading && <CircleLoading />}
         {isSinglePostError && <ErrorMessage message={errorMessage} />}
     </div>
   )
