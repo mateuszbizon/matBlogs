@@ -10,13 +10,13 @@ import { blogSchema, TBlogSchema } from '@/validations/blogSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Editor from './Editor'
 import ImageFormHolder from './ImageFormHolder'
-import useCreatePost from '@/hooks/useCreatePost'
+import useCreatePost from '@/hooks/api/posts/useCreatePost'
 import Input from '../ui/Input'
 import Label from '../ui/Label'
 import FormBox from './FormBox'
 import { TPostModel } from '@/types/models'
 import { getFileFromUrl } from '@/utils/getFileFromUrl'
-import useEditPost from '@/hooks/useEditPost'
+import useEditPost from '@/hooks/api/posts/useEditPost'
 
 type BlogFormProps = {
     post?: {

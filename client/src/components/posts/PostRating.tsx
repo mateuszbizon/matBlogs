@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Rating from '@mui/material/Rating'
 import { useUserAuth } from '@/context/UserAuthContext';
 import Link from 'next/link';
-import useRatePost from '@/hooks/useRatePost';
+import useRatePost from '@/hooks/api/ratings/useRatePost';
 
 type PostRatingProps = {
     postId: string;

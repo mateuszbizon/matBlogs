@@ -8,7 +8,7 @@ import Button from '../ui/Button';
 import { useUserAuth } from '@/context/UserAuthContext';
 import ButtonLink from '../ui/ButtonLink';
 import DeleteModal from '../DeleteModal';
-import useDeletePostComment from '@/hooks/useDeletePostComment';
+import useDeletePostComment from '@/hooks/api/comments/useDeletePostComment';
 import PostCommentReplyForm from '../forms/PostCommentReplyForm';
 import PostCommentRepliesList from '../lists/PostCommentRepliesList';
 import PostCommentReplyCard from './PostCommentReplyCard';

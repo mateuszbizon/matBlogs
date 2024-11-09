@@ -15,12 +15,12 @@ function useCreatePostReply() {
             if (data.data) {
                 queryClient.setQueryData<TMainResponse<TPostComments>>(["get-post-comments"], (oldData) => {
                     if (oldData?.data) {
-                        return { 
+                        return {
                             ...oldData, data: {
                                 ...oldData.data, comments: oldData.data.comments.map(comment => {
                                     if (comment.id === data.data?.commentReply.commentId) {
                                         return {
-                                            ...comment, commentReplies: [data.data.commentReply, ...comment.commentReplies!]
+                                            ...comment, commentReplies: [data.data.commentReply, ...(comment.commentReplies || [])]
                                         }
                                     }
 

@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import useGetSingleUser from '@/hooks/useGetSingleUser'
+import useGetSingleUser from '@/hooks/api/users/useGetSingleUser'
 import { useParams } from 'next/navigation'
 import ErrorMessage from '@/components/ErrorMessage'
 import UserProfileLoading from '@/components/loadings/UserProfileLoading'

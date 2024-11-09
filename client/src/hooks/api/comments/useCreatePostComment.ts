@@ -15,11 +15,11 @@ function useCreatePostComment() {
                 queryClient.setQueryData<TMainResponse<TPostComments>>(
                     ["get-post-comments"],
                     (oldData) => {
-                      if (oldData) {
+                      if (oldData?.data) {
                         return {
                           ...oldData,
                           data: {
-                            ...oldData.data, comments: [data.data?.comment!, ...oldData.data?.comments!],
+                            ...oldData.data, comments: [data.data?.comment!, ...oldData.data.comments],
                           },
                         };
                       }

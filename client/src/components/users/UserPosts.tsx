@@ -1,6 +1,6 @@
 "use client";
 
-import useGetUserPosts from "@/hooks/useGetUserPosts";
+import useGetUserPosts from "@/hooks/api/posts/useGetUserPosts";
 import React, { useState } from "react";
 import UserPostsList from "../lists/UserPostsList";
 import UserPostCard from "../cards/UserPostCard";

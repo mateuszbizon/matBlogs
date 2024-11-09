@@ -1,6 +1,6 @@
 "use client"
 
-import useGetPostComments from '@/hooks/useGetPostComments'
+import useGetPostComments from '@/hooks/api/comments/useGetPostComments'
 import React from 'react'
 import PostCommentCard from '../cards/PostCommentCard'
 import PostCommentsList from '../lists/PostCommentsList'

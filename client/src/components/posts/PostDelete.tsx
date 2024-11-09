@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Button from '../ui/Button'
-import useDeletePost from '@/hooks/useDeletePost';
+import useDeletePost from '@/hooks/api/posts/useDeletePost';
 import DeleteModal from '../DeleteModal';
 
 type PostDeleteProps = {

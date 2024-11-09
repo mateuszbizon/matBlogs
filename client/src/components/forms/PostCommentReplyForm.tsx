@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { commentSchema, TCommentSchema } from '@/validations/commentSchema'
 import InputErrorMessage from './InputErrorMessage'
-import useCreatePostReply from '@/hooks/useCreatePostReply'
+import useCreatePostReply from '@/hooks/api/comments/useCreatePostReply'
 
 type PostCommentReplyFormProps = {
     replyingUsername: string;

@@ -7,7 +7,7 @@ import profileDefault from "@/assets/user_profile_default.png"
 import { TCommentReplyModel } from '@/types/models';
 import PostCommentReplyForm from '../forms/PostCommentReplyForm';
 import Link from 'next/link';
-import useDeletePostReply from '@/hooks/useDeletePostReply';
+import useDeletePostReply from '@/hooks/api/comments/useDeletePostReply';
 import DeleteModal from '../DeleteModal';
 
 type PostCommentReplyCardProps = {

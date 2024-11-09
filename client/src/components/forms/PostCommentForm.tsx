@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { commentSchema, TCommentSchema } from '@/validations/commentSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import InputErrorMessage from './InputErrorMessage'
-import useCreatePostComment from '@/hooks/useCreatePostComment'
+import useCreatePostComment from '@/hooks/api/comments/useCreatePostComment'
 import Link from 'next/link'
 import { useUserAuth } from '@/context/UserAuthContext'
 
