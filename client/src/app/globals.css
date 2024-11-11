@@ -44,6 +44,10 @@
         @apply bg-dark hover:bg-dark-hover text-white
     }
 
+    .button-secondary-no-bg {
+        @apply text-dark hover:text-dark-hover font-medium
+    }
+
     .button-white {
         @apply bg-grey hover:bg-white
     }
@@ -54,6 +58,10 @@
 
     .button-delete-no-bg {
         @apply text-red-500 hover:text-error font-medium
+    }
+
+    .button-circle {
+        @apply text-dark hover:bg-black/20 p-2 rounded-full
     }
 
     .nav-link {

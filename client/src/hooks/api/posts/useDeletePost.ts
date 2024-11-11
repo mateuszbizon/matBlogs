@@ -3,12 +3,13 @@ import { MESSAGES } from "@/constants/messages"
 import { usePopupMessage } from "@/context/PopupMessageContext"
 import { useUserAuth } from "@/context/UserAuthContext"
 import { TMainResponse } from "@/types/responses"
-import { TDeletedPost } from "@/types/responses/post.response"
-import { useMutation } from "@tanstack/react-query"
+import { TDeletedPost, TUserPosts } from "@/types/responses/post.response"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { usePathname, useRouter } from "next/navigation"
 
 
 function useDeletePost() {
+    const queryClient = useQueryClient()
     const { userData } = useUserAuth()
     const { showErrorMessage, showSuccessMessage } = usePopupMessage()
     const router = useRouter()
@@ -22,6 +23,20 @@ function useDeletePost() {
 
                 return
             }
+
+            queryClient.setQueryData<TMainResponse<TUserPosts>>(["user-posts"], (oldData) => {
+                if (oldData?.data) {
+                    return {
+                        ...oldData, data: {
+                            ...oldData.data, posts: oldData.data.posts.filter(post => {
+                                return post.id !== data.data?.post.id
+                            })
+                        }
+                    } 
+                }
+
+                return oldData
+            })
         },
         onError: () => {
             showErrorMessage(MESSAGES.post.postNotDeleted)

@@ -7,15 +7,16 @@ import DeleteModal from '../DeleteModal';
 
 type PostDeleteProps = {
     postId: string;
+    userProfilePage?: boolean;
 }
 
-function PostDelete({ postId }: PostDeleteProps) {
+function PostDelete({ postId, userProfilePage }: PostDeleteProps) {
     const { handleDeletePost, isPending } = useDeletePost()
     const [openModal, setOpenModal] = useState(false)
 
   return (
     <div>
-        <Button variant='delete' padding='small' onClick={() => setOpenModal(true)}>
+        <Button variant={`${userProfilePage ? "delete-no-bg" : "delete"}`} padding='small' onClick={() => setOpenModal(true)}>
             Delete post
         </Button>
         
