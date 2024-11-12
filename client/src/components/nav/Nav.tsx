@@ -1,14 +1,15 @@
 "use client"
 
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import NavItemsList from './NavItemsList'
 import MenuBarsIcon from '../icons/MenuBarsIcon'
 import NavMobile from './NavMobile'
 import ProfileBtn from './ProfileBtn'
+import { useNav } from '@/context/NavContext'
 
 function Nav() {
-    const [navMobileOpen, setNavMobileOpen] = useState(false)
+    const { openNavMobile, closeNavMobile } = useNav()
 
   return (
     <nav className='bg-light fixed left-0 top-0 w-full py-2 z-10'>
@@ -24,7 +25,7 @@ function Nav() {
                 <div className='hidden lg:block'>
                     <ProfileBtn />
                 </div>
-                <button className='lg:hidden p-2 text-dark hover:bg-black/20 rounded-full' onClick={() => setNavMobileOpen(true)}>
+                <button className='lg:hidden p-2 text-dark hover:bg-black/20 rounded-full' onClick={openNavMobile}>
                     <div className='size-5'>
                         <MenuBarsIcon />
                     </div>
@@ -32,7 +33,7 @@ function Nav() {
             </div>
         </div>
 
-        <NavMobile navMobileOpen={navMobileOpen} setNavMobileOpen={setNavMobileOpen} />
+        <NavMobile />
     </nav>
   )
 }

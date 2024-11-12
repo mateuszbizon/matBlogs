@@ -1,22 +1,34 @@
-import Link from 'next/link'
+import { useNav } from '@/context/NavContext'
 import React from 'react'
 
-const NAV_SEARCH_ITEMS = [
-    { name: "Search users", href: "/search-users" },
-    { name: "Search posts", href: "/search-posts" },
-]
+type NavSearchItemsListProps = {
+    closeNavSearchItem?: () => void;
+}
 
-function NavSearchItemsList() {
+function NavSearchItemsList({ closeNavSearchItem }: NavSearchItemsListProps) {
+    const { closeNavMobile } = useNav()
+
+    function showSearchUsers() {
+        closeNavMobile()
+
+        if (closeNavSearchItem) {
+            closeNavSearchItem()
+        }
+    }
+
+    function showSearchPosts() {
+        closeNavMobile()
+
+        if (closeNavSearchItem) {
+            closeNavSearchItem()
+        }
+    }
+
   return (
-    <ul className='flex flex-col gap-5'>
-        {NAV_SEARCH_ITEMS.map(item => {
-            return (
-                <li key={item.name}>
-                    <Link href={item.href} className='nav-link'>{item.name}</Link>
-                </li>
-            )
-        })}
-    </ul>
+    <div className='flex flex-col gap-5'>
+        <button onClick={showSearchUsers} className='nav-link'>Search users</button>
+        <button onClick={showSearchPosts} className='nav-link'>Search posts</button>
+    </div>
   )
 }
 

@@ -18,7 +18,7 @@ function NavSearchItem() {
           containerClassName='hidden lg:block z-30'
           content={() => (
             <div className={`bg-white p-3 rounded-lg`}>
-                <NavSearchItemsList />
+                <NavSearchItemsList closeNavSearchItem={() => setSearchOpen(false)} />
             </div>
           )}
         >
@@ -28,7 +28,7 @@ function NavSearchItem() {
         <div className='lg:hidden'>
           <button className='nav-link' onClick={() => setSearchOpenMobile(prev => !prev)}>Search</button>
           <div className={`pl-2 mt-2 overflow-hidden ${searchOpenMobile ? "max-h-[500px]" : "max-h-0"} transition-all duration-500`}>
-              <NavSearchItemsList />
+              <NavSearchItemsList closeNavSearchItem={() => setSearchOpenMobile(false)} />
           </div>
         </div>
     </div>
