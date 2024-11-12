@@ -24,19 +24,7 @@ function useDeletePost() {
                 return
             }
 
-            queryClient.setQueryData<TMainResponse<TUserPosts>>(["user-posts"], (oldData) => {
-                if (oldData?.data) {
-                    return {
-                        ...oldData, data: {
-                            ...oldData.data, posts: oldData.data.posts.filter(post => {
-                                return post.id !== data.data?.post.id
-                            })
-                        }
-                    } 
-                }
-
-                return oldData
-            })
+            queryClient.invalidateQueries({ queryKey: ["user-posts"] })
         },
         onError: () => {
             showErrorMessage(MESSAGES.post.postNotDeleted)
