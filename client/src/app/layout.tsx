@@ -5,6 +5,7 @@ import Nav from "@/components/nav/Nav";
 import Providers from "@/components/Providers";
 import PopupMessage from "@/components/shared/PopupMessage";
 import SearchUsers from "@/components/shared/SearchUsers";
+import SearchPosts from "@/components/shared/SearchPosts";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
           className={`${montserrat.className} bg-light`}
         >
           <SearchUsers />
+          <SearchPosts />
           <PopupMessage />
           <Nav />
           {children}

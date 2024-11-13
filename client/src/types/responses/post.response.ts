@@ -28,3 +28,13 @@ export type TDeletedPost = {
         id: TPostModel["id"]
     }
 }
+
+export type TSearchedPost = {
+    id: TPostModel["id"];
+    title: TPostModel["title"];
+    slug: TPostModel['slug'];
+}
+
+export type TSearchedPosts = {
+    posts: TSearchedPost[];
+}

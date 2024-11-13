@@ -8,7 +8,7 @@ type NavSearchItemsListProps = {
 
 function NavSearchItemsList({ closeNavSearchItem }: NavSearchItemsListProps) {
     const { closeNavMobile } = useNav()
-    const { openSearchUsers } = useSearch()
+    const { openSearchUsers, openSearchPosts } = useSearch()
 
     function showSearchUsers() {
         closeNavMobile()
@@ -21,6 +21,7 @@ function NavSearchItemsList({ closeNavSearchItem }: NavSearchItemsListProps) {
 
     function showSearchPosts() {
         closeNavMobile()
+        openSearchPosts()
 
         if (closeNavSearchItem) {
             closeNavSearchItem()

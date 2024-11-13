@@ -29,3 +29,9 @@ export async function editPost({ postData, postId }: { postData: FormData, postI
 
     return data
 }
+
+export async function searchPosts(searchValue: string) {
+    const { data } = await API.get(`/posts/search-posts?search=${searchValue}`)
+
+    return data
+}
