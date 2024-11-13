@@ -23,3 +23,13 @@ export type TUserProfile = {
     }
     postsAmount: number;
 }
+
+export type TSearchedUser = {
+    id: TUserModel["id"];
+    name: TUserModel["name"];
+    username: TUserModel["username"];
+}
+
+export type TSearchedUsers = {
+    users: TSearchedUser[];
+}

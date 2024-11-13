@@ -19,3 +19,9 @@ export async function getSingleUser(username: string) {
 
 	return data;
 }
+
+export async function searchUsers(searchValue: string) {
+	const { data } = await API.get(`/users/search-users?search=${searchValue}`)
+
+	return data
+}

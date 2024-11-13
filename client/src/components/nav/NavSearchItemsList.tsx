@@ -1,4 +1,5 @@
 import { useNav } from '@/context/NavContext'
+import { useSearch } from '@/context/SearchContext';
 import React from 'react'
 
 type NavSearchItemsListProps = {
@@ -7,9 +8,11 @@ type NavSearchItemsListProps = {
 
 function NavSearchItemsList({ closeNavSearchItem }: NavSearchItemsListProps) {
     const { closeNavMobile } = useNav()
+    const { openSearchUsers } = useSearch()
 
     function showSearchUsers() {
         closeNavMobile()
+        openSearchUsers()
 
         if (closeNavSearchItem) {
             closeNavSearchItem()
