@@ -7,6 +7,8 @@ import React, { useEffect, useState } from 'react'
 import Input from '../ui/Input'
 import CircleLoading from '../loadings/CircleLoading'
 import Shadow from '../Shadow'
+import SearchedPostsList from '../lists/SearchedPostsList'
+import SearchedPostCard from '../cards/SearchedPostCard'
 
 function SearchPosts() {
     const { handleSearchPosts, searchedPostsData, isPending } = useSearchPosts()
@@ -29,6 +31,14 @@ function SearchPosts() {
                 </div>
                 <div className='min-h-[100px] max-h-[300px] mt-5 overflow-auto'>
                     {isPending && <CircleLoading />}
+                    {searchedPostsData?.data && (
+                        <SearchedPostsList
+                            posts={searchedPostsData.data.posts}
+                            renderItem={(post) => (
+                                <SearchedPostCard key={post.id} post={post} />
+                            )}
+                        />
+                    )}
                 </div>
             </div>
         </div>
