@@ -1,12 +1,14 @@
 "use client"
 
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Shadow from '../Shadow'
 import { useSearch } from '@/context/SearchContext'
 import Input from '../ui/Input'
 import useSearchUsers from '@/hooks/api/users/useSearchUsers'
 import { useDebounce } from '@/hooks/useDebounce'
 import CircleLoading from '../loadings/CircleLoading'
+import SearchedUsersList from '../lists/SearchedUsersList'
+import SearchedUserCard from '../cards/SearchedUserCard'
 
 function SearchUsers() {
     const { handleSearchUsers, searchedUsersData, isPending } = useSearchUsers()
@@ -27,8 +29,16 @@ function SearchUsers() {
                 <div>
                     <Input type='text' value={searchValue} onChange={(e) => setSearchValue(e.target.value)} className='w-full' placeholder='Search users...' />
                 </div>
-                <div className='min-h-[100px] max-h-[300px] mt-5'>
+                <div className='min-h-[100px] max-h-[300px] mt-5 overflow-auto'>
                     {isPending && <CircleLoading />}
+                    {searchedUsersData?.data && (
+                        <SearchedUsersList
+                            users={searchedUsersData.data.users}
+                            renderItem={(user) => (
+                                <SearchedUserCard key={user.id} user={user} />
+                            )}
+                        />
+                    )}
                 </div>
             </div>
         </div>
