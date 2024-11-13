@@ -5,10 +5,12 @@ import useSearchPosts from '@/hooks/api/posts/useSearchPosts'
 import { useDebounce } from '@/hooks/useDebounce'
 import React, { useEffect, useState } from 'react'
 import Input from '../ui/Input'
-import CircleLoading from '../loadings/CircleLoading'
 import Shadow from '../Shadow'
 import SearchedPostsList from '../lists/SearchedPostsList'
 import SearchedPostCard from '../cards/SearchedPostCard'
+import SearchContainer from '../search/SearchContainer'
+import SearchInputBox from '../search/SearchInputBox'
+import SearchContent from '../search/SearchContent'
 
 function SearchPosts() {
     const { handleSearchPosts, searchedPostsData, isPending } = useSearchPosts()
@@ -24,24 +26,22 @@ function SearchPosts() {
 
   return (
     <div>
-        <div className={`fixed top-3 left-1/2 -translate-x-1/2 w-full max-w-[600px] z-30 ${searchPostsOpen ? "opacity-100" : "opacity-0 pointer-events-none"} transition-all duration-300`}>
-            <div className='bg-light p-3 rounded-lg'>
-                <div>
-                    <Input type='text' value={searchValue} onChange={(e) => setSearchValue(e.target.value)} className='w-full' placeholder='Search posts...' />
-                </div>
-                <div className='min-h-[100px] max-h-[300px] mt-5 overflow-auto'>
-                    {isPending && <CircleLoading />}
-                    {searchedPostsData?.data && (
-                        <SearchedPostsList
-                            posts={searchedPostsData.data.posts}
-                            renderItem={(post) => (
-                                <SearchedPostCard key={post.id} post={post} />
-                            )}
-                        />
-                    )}
-                </div>
-            </div>
-        </div>
+        <SearchContainer searchOpen={searchPostsOpen}>
+            <SearchInputBox>
+                <Input type='text' value={searchValue} onChange={(e) => setSearchValue(e.target.value)} className='w-full' placeholder='Search posts...' />
+            </SearchInputBox>
+            
+            <SearchContent isPending={isPending}>
+                {searchedPostsData?.data && (
+                    <SearchedPostsList
+                        posts={searchedPostsData.data.posts}
+                        renderItem={(post) => (
+                            <SearchedPostCard key={post.id} post={post} />
+                        )}
+                    />
+                )}
+            </SearchContent>
+        </SearchContainer>
 
         <Shadow shadowOpen={searchPostsOpen} closeShadow={closeSearchPosts} />
     </div>
