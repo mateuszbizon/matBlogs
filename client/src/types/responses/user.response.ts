@@ -1,4 +1,4 @@
-import { TUserModel } from "../models"
+import { TProfileModel, TUserModel } from "../models"
 
 export type TSignUpResponse = {
     user: {
@@ -28,6 +28,7 @@ export type TSearchedUser = {
     id: TUserModel["id"];
     name: TUserModel["name"];
     username: TUserModel["username"];
+    profile: TUserModel["profile"]
 }
 
 export type TSearchedUsers = {

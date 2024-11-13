@@ -24,6 +24,7 @@ export async function searchUsers(search: string) {
             id: true,
             username: true,
             name: true,
+            profile: true,
         },
         orderBy: {
             username: "asc"
