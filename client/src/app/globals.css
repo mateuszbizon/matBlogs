@@ -96,14 +96,6 @@
         @apply border-error focus:border-error
     }
 
-    .input-error-message {
-        @apply mt-1 text-error invisible
-    }
-
-    .input-error-message-show {
-        @apply visible
-    }
-
     .modal {
         @apply p-5 rounded-xl w-[500px] backdrop:bg-black/30
     }

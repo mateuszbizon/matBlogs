@@ -7,7 +7,7 @@ type InputErrorMessageProps = {
 
 function InputErrorMessage({ errors }: InputErrorMessageProps) {
   return (
-    <span className={`input-error-message ${errors && "input-error-message-show"}`}>
+    <span className={`mt-1 text-error ${errors ? "visible" : "invisible"}`}>
         {errors ? errors.message : "error"}
     </span>
   )
