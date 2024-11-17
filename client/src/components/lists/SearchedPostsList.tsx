@@ -1,5 +1,6 @@
 import { TSearchedPost } from '@/types/responses/post.response'
 import React from 'react'
+import NoSearchedItemMessage from '../messages/NoSearchedItemMessage';
 
 type SearchedPostsListProps = {
     posts: TSearchedPost[];
@@ -11,7 +12,7 @@ function SearchedPostsList({ posts, renderItem }: SearchedPostsListProps) {
     <div>
         {posts.map((item) => renderItem(item))}
         {posts.length == 0 && (
-            <p className='text-center text-dark text-lg'>No posts found</p>
+            <NoSearchedItemMessage message='No posts found' />
         )}
     </div>
   )

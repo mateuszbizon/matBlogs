@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorMessage from "@/components/ErrorMessage";
+import ErrorMessage from "@/components/messages/ErrorMessage";
 import BlogForm from "@/components/forms/BlogForm";
 import CircleLoading from "@/components/loadings/CircleLoading";
 import { useUserAuth } from "@/context/UserAuthContext";
@@ -11,11 +11,15 @@ import React from "react";
 function EditBlogPage() {
 	const { slug } = useParams<{ slug: string }>();
 	const { isAuthor } = useUserAuth();
-	const { singlePost, isSinglePostError, isSinglePostLoading, errorMessage } =
+	const { singlePost, isSinglePostError, isSinglePostLoading, error } =
 		useGetSinglePost({ slug });
 
 	if (singlePost?.data && !isAuthor(singlePost.data.post.authorId)) {
-		redirect("/");
+		return (
+			<div className='main-padding-y main-container'>
+				<ErrorMessage statusCode={403} />
+			</div>
+		);
 	}
 
 	return (
@@ -27,7 +31,9 @@ function EditBlogPage() {
 				</div>
 			)}
 			{isSinglePostLoading && <CircleLoading />}
-			{isSinglePostError && <ErrorMessage message={errorMessage} />}
+			{isSinglePostError && (
+				<ErrorMessage statusCode={error?.response?.status} />
+			)}
 		</div>
 	);
 }
