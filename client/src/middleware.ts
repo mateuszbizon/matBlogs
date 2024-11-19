@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 
-const protectedRoutes = ["/create-blog"]
+const protectedRoutes = ["/create-blog", "/edit-profile"]
 const publicRoutes = ["/sign-in", "/sign-up"]
 
 export default async function middleware(req: NextRequest) {

@@ -2,12 +2,16 @@ import React from 'react'
 import { TUserProfile } from '@/types/responses/user.response'
 import Image from 'next/image'
 import userProfileDefault from "@/assets/user_profile_default.png"
+import { useUserAuth } from '@/context/UserAuthContext'
+import ButtonLink from '../ui/ButtonLink'
 
 type UserProfileProps = {
     profile: TUserProfile
 }
 
 function UserProfile({ profile }: UserProfileProps) {
+    const { isAuthor } = useUserAuth()
+
   return (
     <>
         <div className='flex gap-5 sm:gap-10'>
@@ -18,6 +22,14 @@ function UserProfile({ profile }: UserProfileProps) {
                 <span>{profile.user.name}</span>
                 <span>{profile.user.username}</span>
             </div>
+        </div>
+
+        <div className='flex mt-5'>
+            {isAuthor(profile.user.id) && (
+                <ButtonLink href='/edit-profile' padding='small'>
+                    Edit profile
+                </ButtonLink>
+            )}
         </div>
 
         <div className='mt-20 text-dark text-lg sm:text-2xl md:text-3xl'>
