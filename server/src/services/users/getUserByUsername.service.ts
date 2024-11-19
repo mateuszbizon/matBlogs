@@ -7,5 +7,12 @@ export async function getUserByUsername(username: string) {
 		where: {
 			username: username,
 		},
+		include: {
+			profile: {
+				select: {
+					photo: true,
+				}
+			}
+		}
 	});
 }

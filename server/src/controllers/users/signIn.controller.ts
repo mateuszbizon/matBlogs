@@ -52,7 +52,8 @@ export async function signInController(req: Request<{}, {}, TSignInSchema>, res:
             data: {
                 id: existingUser.id, 
                 name: existingUser.name, 
-                username: existingUser.username
+                username: existingUser.username,
+                userPhoto: existingUser.profile?.photo
             }
         })
     } catch (error) {

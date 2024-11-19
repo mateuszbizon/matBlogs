@@ -12,6 +12,7 @@ export type TSignInResponse = {
     id: TUserModel["id"];
     name: TUserModel["name"];
     username: TUserModel["username"];
+    userPhoto?: TProfileModel["photo"]
 }
 
 export type TUserProfile = {
