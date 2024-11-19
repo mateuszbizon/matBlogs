@@ -16,14 +16,14 @@ function EditBlogPage() {
 
 	if (singlePost?.data && !isAuthor(singlePost.data.post.authorId)) {
 		return (
-			<div className='main-padding-y main-container'>
+			<div>
 				<ErrorMessage statusCode={403} />
 			</div>
 		);
 	}
 
 	return (
-		<div className='main-padding-y main-container'>
+		<div>
 			{singlePost?.data && (
 				<div>
 					<h1 className='heading2 text-center mb-5'>Edit blog</h1>

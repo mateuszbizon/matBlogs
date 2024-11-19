@@ -13,7 +13,7 @@ function PostPage() {
 		useGetSinglePost({ slug });
 
 	return (
-		<div className='main-container main-padding-y'>
+		<div>
 			{isSinglePostLoading && <CircleLoading />}
 			{isSinglePostError && (
 				<ErrorMessage statusCode={error?.response?.status} />

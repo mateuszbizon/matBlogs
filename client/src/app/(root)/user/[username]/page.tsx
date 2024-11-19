@@ -14,7 +14,7 @@ function UserPage() {
 		useGetSingleUser({ username: params.username });
 
 	return (
-		<div className='main-container main-padding-y'>
+		<div>
 			{userProfile?.data && (
 				<>
 					<UserProfile profile={userProfile.data} />
