@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import { DatabaseError } from "../../errors/DatabaseError";
-import { TUpdateUserProfileParams } from "../../types/params";
 import { getUserById } from "../../services/users/getUserById.service";
 import { NotFoundError } from "../../errors/NotFoundError";
 import { messages } from "../../messages";
@@ -14,15 +13,14 @@ import { TProfileResponse } from "../../types/responses/user.response";
 import { deleteTemporaryFile } from "../../utils/deleteFile";
 
 export async function updateUserProfileController(
-    req: Request<TUpdateUserProfileParams>, 
+    req: Request, 
     res: Response<TMainResponse<TProfileResponse>>, 
     next: NextFunction
 ) {
     const photo = req.file
-    const { userId } = req.params
 
     try {
-        const existingUser = await getUserById(userId)
+        const existingUser = await getUserById(res.locals.userId)
 
         if (!existingUser) {
             return next(new NotFoundError(messages.user.userNotFound))
@@ -44,7 +42,7 @@ export async function updateUserProfileController(
             return next(new DatabaseError())
         }
 
-        const updatedProfile = await updateUserProfile(userId, imageUrl)
+        const updatedProfile = await updateUserProfile(res.locals.userId, imageUrl)
 
         return res.status(200).json({
             statusCode: 200,

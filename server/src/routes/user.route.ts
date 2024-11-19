@@ -12,8 +12,8 @@ const router = express.Router();
 
 router.post("/sign-up", signUpController);
 router.post("/sign-in", signInController);
-router.patch("/update-user/:userId", authenticationMiddleware, updateUserController)
-router.put("/update-user-profile/:userId", authenticationMiddleware, upload.single("image"), updateUserProfileController)
+router.patch("/update-user", authenticationMiddleware, updateUserController)
+router.put("/update-user-profile", authenticationMiddleware, upload.single("image"), updateUserProfileController)
 router.get("/get-user/:username", getSingleUserController)
 router.get("/search-users", searchUsersController)
 

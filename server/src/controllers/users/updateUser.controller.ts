@@ -7,24 +7,17 @@ import { messages } from "../../messages";
 import { TMainResponse } from "../../types/responses";
 import { TUserResponse } from "../../types/responses/user.response";
 import { TUpdateUserSchema, updateUserSchema } from "../../dtos/updateUser.dto";
-import { TUpdateUserParams } from "../../types/params";
 import { updateUser } from "../../services/users/updateUser.service";
 import { getUserById } from "../../services/users/getUserById.service";
-import { ForbiddenError } from "../../errors/ForbiddenError";
 
-export async function updateUserController(req: Request<TUpdateUserParams, {}, TUpdateUserSchema>, res: Response<TMainResponse<TUserResponse>>, next: NextFunction) {
+export async function updateUserController(req: Request<{}, {}, TUpdateUserSchema>, res: Response<TMainResponse<TUserResponse>>, next: NextFunction) {
     const { username, name } = req.body
-    const { userId } = req.params
 
     try {
-        const existingUser = await getUserById(userId)
+        const existingUser = await getUserById(res.locals.userId)
 
         if (!existingUser) {
             return next(new BadRequestError(messages.user.userNotFound))
-        }
-
-        if (res.locals.userId !== existingUser.id) {
-            return next(new ForbiddenError(messages.forbidden.notAuthor))
         }
 
         const validationResult = updateUserSchema.safeParse(req.body)
@@ -39,7 +32,7 @@ export async function updateUserController(req: Request<TUpdateUserParams, {}, T
             return next(new BadRequestError(messages.user.usernameAlreadyExists))
         }
 
-        const updatedUser = await updateUser({ username, name }, userId)
+        const updatedUser = await updateUser({ username, name }, res.locals.userId)
 
         return res.status(200).json({
             statusCode: 200,
