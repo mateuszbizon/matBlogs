@@ -12,12 +12,14 @@ import { FieldError, useForm } from 'react-hook-form'
 import { TUserProfileSchema, userProfileSchema } from '@/validations/userProfileSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import InputErrorMessage from './InputErrorMessage'
+import useUpdateUserProfile from '@/hooks/api/users/useUpdateUserProfile'
 
 type ProfilePhotoFormProps = {
     userPhoto?: string;
 }
 
 function ProfilePhotoForm({ userPhoto }: ProfilePhotoFormProps) {
+    const { handleUpdateUserProfile, isPending } = useUpdateUserProfile()
     const { changeImage } = useChangeImage()
     const [photo, setPhoto] = useState<TImage | null>(null)
     const { handleSubmit, setValue, formState: { errors } } = useForm<TUserProfileSchema>({
@@ -42,6 +44,12 @@ function ProfilePhotoForm({ userPhoto }: ProfilePhotoFormProps) {
 
     function onSubmit(data: TUserProfileSchema) {
         console.log(data)
+
+        const formData = new FormData()
+
+        formData.append("image", data.photo)
+
+        handleUpdateUserProfile(formData)
     }
 
   return (
@@ -61,8 +69,8 @@ function ProfilePhotoForm({ userPhoto }: ProfilePhotoFormProps) {
             </div>
         </FormBox>
 
-        <Button type='submit'>
-            Update profile
+        <Button type='submit' disabled={isPending}>
+            {isPending ? "Updating profile..." : "Update profile"}
         </Button>
     </form>
   )

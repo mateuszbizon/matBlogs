@@ -25,3 +25,9 @@ export async function searchUsers(searchValue: string) {
 
 	return data
 }
+
+export async function updateUserProfile(formData: FormData) {
+	const { data } = await API.put(`/users/update-user-profile`, formData)
+
+	return data
+}

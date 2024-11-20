@@ -35,3 +35,9 @@ export type TSearchedUser = {
 export type TSearchedUsers = {
     users: TSearchedUser[];
 }
+
+export type TUpdatedUserProfile = {
+    profile: {
+        photo: TProfileModel["photo"]
+    }
+}
