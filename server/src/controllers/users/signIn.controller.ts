@@ -5,10 +5,10 @@ import { getUserByUsername } from "../../services/users/getUserByUsername.servic
 import { BadRequestError } from "../../errors/BadRequestError";
 import { messages } from "../../messages";
 import bcrypt from "bcryptjs"
-import jwt from "jsonwebtoken"
 import { fromZodError } from "zod-validation-error";
 import { TMainResponse } from "../../types/responses";
 import { TSignInResponse } from "../../types/responses/user.response";
+import { generateJwt } from "../../utils/generateJwt";
 
 export async function signInController(req: Request<{}, {}, TSignInSchema>, res: Response<TMainResponse<TSignInResponse>>, next: NextFunction) {
     const { username, password } = req.body
@@ -32,11 +32,12 @@ export async function signInController(req: Request<{}, {}, TSignInSchema>, res:
             return next(new BadRequestError(messages.auth.invalidSignIn))
         }
 
-        const token = jwt.sign({
-            id: existingUser.id, 
-            username: existingUser.username, 
-            name: existingUser.name
-        }, "authToken", { expiresIn: "3d" })
+        const token = generateJwt({
+            id: existingUser.id,
+            name: existingUser.name,
+            username: existingUser.username,
+            userPhoto: existingUser.profile?.photo
+        })
 
         const isProduction = process.env.NODE_ENV === 'production';
 
@@ -46,7 +47,7 @@ export async function signInController(req: Request<{}, {}, TSignInSchema>, res:
             maxAge: 3 * 24 * 60 * 60 * 1000
         })
 
-        res.status(200).json({
+        return res.status(200).json({
             statusCode: 200, 
             message: messages.auth.signedIn, 
             data: {

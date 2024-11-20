@@ -11,6 +11,7 @@ import { updateUserProfile } from "../../services/users/updateUserProfile.servic
 import { TMainResponse } from "../../types/responses";
 import { TProfileResponse } from "../../types/responses/user.response";
 import { deleteTemporaryFile } from "../../utils/deleteFile";
+import { generateJwt } from "../../utils/generateJwt";
 
 export async function updateUserProfileController(
     req: Request, 
@@ -43,6 +44,21 @@ export async function updateUserProfileController(
         }
 
         const updatedProfile = await updateUserProfile(res.locals.userId, imageUrl)
+
+        const token = generateJwt({
+            id: existingUser.id,
+            name: existingUser.name,
+            username: existingUser.username,
+            userPhoto: updatedProfile.photo
+        })
+
+        const isProduction = process.env.NODE_ENV === 'production';
+
+        res.cookie("authToken", token, {
+            httpOnly: true,
+            secure: isProduction,
+            maxAge: 3 * 24 * 60 * 60 * 1000
+        })
 
         return res.status(200).json({
             statusCode: 200,

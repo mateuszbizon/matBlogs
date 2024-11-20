@@ -21,7 +21,8 @@ export function getSignedInUserDataController(req: Request, res: Response<TMainR
             data: {
                 id: decodedData.id,
                 username: decodedData.username,
-                name: decodedData.name
+                name: decodedData.name,
+                userPhoto: decodedData.userPhoto
             }
         })
     } catch (error) {

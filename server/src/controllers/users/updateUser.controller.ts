@@ -5,12 +5,13 @@ import { DatabaseError } from "../../errors/DatabaseError";
 import { fromZodError } from "zod-validation-error"
 import { messages } from "../../messages";
 import { TMainResponse } from "../../types/responses";
-import { TUserResponse } from "../../types/responses/user.response";
+import { TUpdateUserResponse } from "../../types/responses/user.response";
 import { TUpdateUserSchema, updateUserSchema } from "../../dtos/updateUser.dto";
 import { updateUser } from "../../services/users/updateUser.service";
 import { getUserById } from "../../services/users/getUserById.service";
+import { generateJwt } from "../../utils/generateJwt";
 
-export async function updateUserController(req: Request<{}, {}, TUpdateUserSchema>, res: Response<TMainResponse<TUserResponse>>, next: NextFunction) {
+export async function updateUserController(req: Request<{}, {}, TUpdateUserSchema>, res: Response<TMainResponse<TUpdateUserResponse>>, next: NextFunction) {
     const { username, name } = req.body
 
     try {
@@ -34,11 +35,27 @@ export async function updateUserController(req: Request<{}, {}, TUpdateUserSchem
 
         const updatedUser = await updateUser({ username, name }, res.locals.userId)
 
+        const token = generateJwt({
+            id: updatedUser.id,
+            name: updatedUser.name,
+            username: updatedUser.username,
+            userPhoto: updatedUser.profile?.photo
+        })
+
+        const isProduction = process.env.NODE_ENV === 'production';
+
+        res.cookie("authToken", token, {
+            httpOnly: true,
+            secure: isProduction,
+            maxAge: 3 * 24 * 60 * 60 * 1000
+        })
+
         return res.status(200).json({
             statusCode: 200,
             message: messages.user.userUpdated,
             data: {
-                user: updatedUser
+                name: updatedUser.name,
+                username: updatedUser.username
             }
         })
     } catch (error) {

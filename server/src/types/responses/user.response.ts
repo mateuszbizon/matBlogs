@@ -4,6 +4,11 @@ export type TUserResponse = {
     user: TUser
 }
 
+export type TUpdateUserResponse = {
+    name: string;
+    username: string;
+}
+
 export type TProfileResponse = {
     profile: TProfile
 }

@@ -16,6 +16,11 @@ export async function updateUser(user: TUpdateUserSchema, userId: string) {
             id: true,
             username: true,
             name: true,
+            profile: {
+                select: {
+                    photo: true,
+                }
+            }
         }
     })
 }
