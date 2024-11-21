@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import InputErrorMessage from './InputErrorMessage'
 import { TUpdateUserSchema, updateUserSchema } from '@/validations/updateUserSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import useUpdateUser from '@/hooks/api/users/useUpdateUser'
 
 type ProfileNameFormProps = {
     name?: string;
@@ -16,6 +17,7 @@ type ProfileNameFormProps = {
 }
 
 function ProfileNameForm({ name, username }: ProfileNameFormProps) {
+    const { handleUpdateUser, isPending } = useUpdateUser()
     const { register, handleSubmit, formState: { errors } } = useForm<TUpdateUserSchema>({
         resolver: zodResolver(updateUserSchema),
         defaultValues: {
@@ -26,6 +28,8 @@ function ProfileNameForm({ name, username }: ProfileNameFormProps) {
 
     function onSubmit(data: TUpdateUserSchema) {
         console.log(data)
+        
+        handleUpdateUser(data)
     }
 
   return (
@@ -42,8 +46,8 @@ function ProfileNameForm({ name, username }: ProfileNameFormProps) {
             <InputErrorMessage errors={errors.username} />
         </FormBox>
 
-        <Button type='submit'>
-            Update
+        <Button type='submit' disabled={isPending}>
+            {isPending ? "Updating..." : "Update"}
         </Button>
     </form>
   )

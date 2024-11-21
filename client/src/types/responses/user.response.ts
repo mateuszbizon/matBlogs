@@ -41,3 +41,8 @@ export type TUpdatedUserProfile = {
         photo: TProfileModel["photo"]
     }
 }
+
+export type TUpdatedUser = {
+    name: TUserModel["name"];
+    username: TUserModel["username"]
+}
