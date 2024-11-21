@@ -38,7 +38,9 @@ export const messages = {
         signedIn: "User signed in.",
         userNotSignedIn: "Token expired. Sign in again.",
         tokenInvalid: "Invalid token.",
-        userStillSignedIn: "User is still signed in."
+        userStillSignedIn: "User is still signed in.",
+        userSignedOut: "User signed out",
+        
     },
     forbidden: {
         notPostAuthor: "You are not author of that post.",
