@@ -6,7 +6,7 @@ type FormBoxProps = {
 
 function FormBox({ children }: FormBoxProps) {
   return (
-    <div className='form-box'>
+    <div className='mb-3 flex flex-col'>
         {children}
     </div>
   )
