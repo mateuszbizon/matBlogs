@@ -41,7 +41,7 @@
     }
 
     .button-secondary {
-        @apply bg-dark hover:bg-dark-hover text-white
+        @apply bg-dark hover:bg-dark-hover text-white disabled:cursor-not-allowed
     }
 
     .button-secondary-no-bg {

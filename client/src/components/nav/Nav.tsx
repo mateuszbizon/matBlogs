@@ -7,6 +7,7 @@ import MenuBarsIcon from '../icons/MenuBarsIcon'
 import NavMobile from './NavMobile'
 import ProfileBtn from './ProfileBtn'
 import { useNav } from '@/context/NavContext'
+import SignOutBtn from './SignOutBtn'
 
 function Nav() {
     const { openNavMobile, closeNavMobile } = useNav()
@@ -21,9 +22,10 @@ function Nav() {
                 </div>
             </div>
 
-            <div className='ml-auto flex items-center'>
-                <div className='hidden lg:block'>
+            <div className='ml-auto '>
+                <div className='hidden lg:flex lg:items-center lg:space-x-3'>
                     <ProfileBtn />
+                    <SignOutBtn />
                 </div>
                 <button className='lg:hidden p-2 text-dark hover:bg-black/20 rounded-full' onClick={openNavMobile}>
                     <div className='size-5'>

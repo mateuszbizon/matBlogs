@@ -6,6 +6,7 @@ import NavItemsList from './NavItemsList';
 import Shadow from '../Shadow';
 import ProfileBtn from './ProfileBtn';
 import { useNav } from '@/context/NavContext';
+import SignOutBtn from './SignOutBtn';
 
 function NavMobile() {
     const { closeNavMobile, navMobileOpen } = useNav()
@@ -24,8 +25,9 @@ function NavMobile() {
 
                 <NavItemsList />
                 
-                <div className='mt-5 flex justify-center'>
+                <div className='mt-5 flex flex-col items-center space-y-3'>
                     <ProfileBtn />
+                    <SignOutBtn />
                 </div>
             </div>
         </div>
