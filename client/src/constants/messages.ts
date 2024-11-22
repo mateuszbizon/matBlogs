@@ -9,7 +9,9 @@ export const MESSAGES = {
         userUpdated: "User data updated",
         userNotUpdated: "Can't update user data. Try again later",
         userProfileUpdated: "User profile updated",
-        userProfileNotUpdated: "Can't update user profile. Try again later"
+        userProfileNotUpdated: "Can't update user profile. Try again later",
+        userSignedOut: "Signed out",
+        userNotSignedOut: "Can't sign out. Try again later"
     },
     post: {
         postCreated: "Blog post created",

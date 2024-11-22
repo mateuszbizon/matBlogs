@@ -5,3 +5,9 @@ export async function getSignedInUserData() {
 
     return data
 }
+
+export async function signOut() {
+    const { data } = await API.get("/auth/sign-out")
+
+    return data
+}

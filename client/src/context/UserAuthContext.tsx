@@ -6,7 +6,7 @@ import { TSignInResponse } from "@/types/responses/user.response";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type TUserAuthContext = {
-    saveUser: (user: TSignInResponse) => void;
+    saveUser: (user: TSignInResponse | null) => void;
     userData: TSignInResponse | null
     isSignedIn: boolean
     isAuthor: (userId: string) => boolean;
@@ -26,7 +26,7 @@ export function useUserAuth() {
 export function UserAuthProvider({ children }: { children: React.ReactNode }) {
     const [userData, setUserData] = useState<TSignInResponse | null>(null)
 
-    function saveUser(user: TSignInResponse) {
+    function saveUser(user: TSignInResponse | null) {
         setUserData(user)
     }
     
