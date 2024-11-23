@@ -57,7 +57,8 @@ export async function updateUserProfileController(
         res.cookie("authToken", token, {
             httpOnly: true,
             secure: isProduction,
-            maxAge: 3 * 24 * 60 * 60 * 1000
+            maxAge: 3 * 24 * 60 * 60 * 1000,
+            sameSite: "none",
         })
 
         return res.status(200).json({
