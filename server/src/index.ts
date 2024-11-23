@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: ["http://localhost:3000", "https://mat-blogs.vercel.app/"],
     credentials: true,
 }))
 
