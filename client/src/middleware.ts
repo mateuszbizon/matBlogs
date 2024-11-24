@@ -15,6 +15,7 @@ export default async function middleware(req: NextRequest) {
             headers: {
                 cookie: req.headers.get("cookie") || "",
             },
+            withCredentials: true,
         });
 
         if (response.status == 200) {
